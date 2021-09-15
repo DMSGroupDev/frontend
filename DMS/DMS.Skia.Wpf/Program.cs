@@ -1,4 +1,0 @@
-﻿
-namespace DMS.Skia.Gtk
-{
-}
