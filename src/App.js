@@ -4,16 +4,7 @@ import Message from './common/Message.js';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-import LocalizedStrings from 'react-localization';
-
-let strings = new LocalizedStrings({
-    en:{
-        title: "DMS"
-    },
-    cz: {
-        title: "DMS"
-    }
-   });
+import strings from './localization/Localization.js';
 
 export default class App extends Component {
   constructor(props) {

@@ -1,19 +1,6 @@
 import React, { Component } from 'react';
 import validator from 'validator';
-import LocalizedStrings from 'react-localization';
-
-let strings = new LocalizedStrings({
-    en:{
-        invalidEmail: "email format is invalid",
-        invalidPassword: "password is too short",
-        invalidTextValue: "value is too short"
-    },
-    cz: {
-        invalidEmail: "formát emailu není validní",
-        invalidPassword: "heslo je příliš krátké",
-        invalidTextValue: "hodnota je příliš krátká"
-    }
-   });
+import strings from '../localization/Localization.js';
 
 export default class Input extends Component {
     constructor(props) {
