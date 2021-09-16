@@ -9,7 +9,9 @@ const en = [{
 
     // registration form
     titleRegistration: "Registrace uživatele",
-    userName: "Jméno",
+    userName: "Uživatelské jméno",
+    name: "Jméno",
+    surname: "Příjmení",
     email: "Email",
     password: "Heslo",
     register: "Registrovat",

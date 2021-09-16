@@ -10,6 +10,8 @@ const en = [{
     // registration form
     titleRegistration: "User registration",
     userName: "User name",
+    name: "Name",
+    surname: "Surname",
     email: "Email",
     register: "Register",
     password: "Password",

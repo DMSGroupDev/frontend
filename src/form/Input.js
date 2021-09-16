@@ -90,7 +90,7 @@ export default class Input extends Component {
                         required={this.state.required}
                         className="form-control input"
                         />
-                <span className="text-danger">{this.state.validInfo} </span>
+                <div className="text-danger inputValidate">{this.state.validInfo} </div>
                 </div>
             </div>
         );

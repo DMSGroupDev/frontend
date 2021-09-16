@@ -10,6 +10,8 @@ export default class RegistrationForm extends Component {
         super(props);
         this.state = { 
             userName: "", 
+            name: "",
+            surname: "",
             email: "", 
             password: "",
             isValidForm: false,
@@ -23,9 +25,13 @@ export default class RegistrationForm extends Component {
         const handleChangeUserName = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidUserName: isValid});
         const handleChangeEmail = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidEmail: isValid});
         const handleChangePassword = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidPassword: isValid});
+        const handleChangeName = (name, value, validInfo) => this.setState({ [name]: value, validInfo: validInfo});
+        const handleChangeSurname = (name, value, validInfo) => this.setState({ [name]: value, validInfo: validInfo});
         this.handleChangeUserName = handleChangeUserName.bind(this, 'userName');
         this.handleChangeEmail = handleChangeEmail.bind(this, 'email');
         this.handleChangePassword = handleChangePassword.bind(this, 'password');
+        this.handleChangeName = handleChangeName.bind(this, 'name');
+        this.handleChangeSurname = handleChangeSurname.bind(this, 'surname');
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -57,7 +63,7 @@ export default class RegistrationForm extends Component {
     }
 
     handleReset(){
-        this.setState({ userName: "", email: "", password: ""});
+        this.setState({ userName: "", email: "", password: "", name: "", surname: ""});
       };
 
     handleSubmit(event) {
@@ -91,6 +97,18 @@ export default class RegistrationForm extends Component {
                     label={strings.password}
                     type="password"
                     required = "true"/>
+                <Input name="name" 
+                    value={this.state.name}
+                    onChange={this.handleChangeName}
+                    label={strings.name}
+                    type="text"
+                    required = "false"/>
+                <Input name="surname" 
+                    value={this.state.surname}
+                    onChange={this.handleChangeSurname}
+                    label={strings.surname}
+                    type="text"
+                    required = "false"/>
                 <input type="submit" className="btn btn-sm btn-light" value={strings.register} onClick={this.handleSubmit} />
             </form>
         );
