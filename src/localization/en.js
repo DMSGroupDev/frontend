@@ -3,7 +3,7 @@ const en = [{
 
     // input validate
     invalidEmail: "email format is invalid",
-    passwordInfo: "the password must contain uppercase and lowercase letter, a number and a special character and must be longer than 7 characters",
+    passwordInfo: "password must contain uppercase and lowercase letter, a number and a special character and must be longer than 7 characters",
     invalidPassword: "password format is invalid",
     invalidTextValue: "value is too short",
     invalidName: "name is not valid",

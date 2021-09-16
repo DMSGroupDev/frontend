@@ -3,7 +3,9 @@ import validator from 'validator';
 import strings from '../localization/Localization.js';
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
+import HelpIcon from "@material-ui/icons/HelpOutline";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import ReactTooltip from 'react-tooltip';
 
 export default class Input extends Component {
     constructor(props) {
@@ -113,6 +115,7 @@ export default class Input extends Component {
                 <div className="row inputGroup">
                     <label htmlFor={name} className="inputLabel">
                         {label} <span className="text-danger">{this.state.reqStar}</span>
+                        <span className="infoToolTip" data-tip={strings.passwordInfo}><HelpIcon /><ReactTooltip type="light" border borderColor="lightgray" textColor="gray"/></span>
                     </label>
                     <div>
                         <div className="passInputGroup">

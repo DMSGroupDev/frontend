@@ -29,3 +29,7 @@
 .MuiIconButton-root{
   padding:5px !important;
 }
+
+.infoToolTip{
+  color:lightgray;
+}
