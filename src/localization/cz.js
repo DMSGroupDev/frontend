@@ -3,9 +3,11 @@ const en = [{
 
     // input validate
     invalidEmail: "formát emailu není validní",
-    invalidPassword: "heslo je příliš krátké",
+    passwordInfo: "heslo musí obsahovat velké a malé písmeno, číslo a speciální znak a musí být delší než 7 znaků",
+    invalidPassword: "formát hesla není validní",
     invalidTextValue: "hodnota je příliš krátká",
-    invalidUserName: "uživatelské jméno není validní",
+    invalidName: "uživatelské jméno není validní",
+    invalidSurname: "uživatelské jméno není validní",
 
     // registration form
     titleRegistration: "Registrace uživatele",
@@ -15,7 +17,7 @@ const en = [{
     email: "Email",
     password: "Heslo",
     register: "Registrovat",
-    resultSuccess: " je nově registrovaný uživatel",
+    resultSuccess: " je nově registrovaný uživatel s uživatelským jménem ",
     
 }];
 

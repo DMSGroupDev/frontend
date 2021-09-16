@@ -15,19 +15,18 @@ export default class RegistrationForm extends Component {
             email: "", 
             password: "",
             isValidForm: false,
-            isValidUserName: false,
             isValidEmail: false,
             isValidPassword: false,
+            isValidName: false,
+            isValidSurname: false,
             validInfo: "",
             result: null,
             show: true};
 
-        const handleChangeUserName = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidUserName: isValid});
         const handleChangeEmail = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidEmail: isValid});
         const handleChangePassword = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidPassword: isValid});
-        const handleChangeName = (name, value, validInfo) => this.setState({ [name]: value, validInfo: validInfo});
-        const handleChangeSurname = (name, value, validInfo) => this.setState({ [name]: value, validInfo: validInfo});
-        this.handleChangeUserName = handleChangeUserName.bind(this, 'userName');
+        const handleChangeName = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidName: isValid});
+        const handleChangeSurname = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidSurname: isValid});
         this.handleChangeEmail = handleChangeEmail.bind(this, 'email');
         this.handleChangePassword = handleChangePassword.bind(this, 'password');
         this.handleChangeName = handleChangeName.bind(this, 'name');
@@ -37,15 +36,23 @@ export default class RegistrationForm extends Component {
 
     validate() {
         let info = "";
-        if (this.state.isValidUserName && this.state.isValidEmail && this.state.isValidPassword)
+        if (this.state.isValidName && this.state.isValidSurname && this.state.isValidEmail && this.state.isValidPassword)
         {
-            // TODO SEND DATA TO DB
-            info = this.state.userName + strings.resultSuccess;
+            // TODO check unique email and newUserName
+            let newUserName = this.state.surname.substring(0,5).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") + this.state.name.substring(0,3).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            info = this.state.name + ' ' + this.state.surname + strings.resultSuccess + newUserName;
             this.setState({ show: false });
+
+            // TODO SEND DATA TO DB
             return ([info, false]);
         } else {
-            if(!this.state.isValidUserName) {
-                info = strings.invalidUserName;
+            if(!this.state.isValidName) {
+                info = strings.invalidName;
+            }
+            if(!this.state.isValidSurname) {
+                if (info !== "")
+                    info += ", ";
+                info += strings.invalidSurname;
             }
             if (!this.state.isValidEmail) {
                 if (info !== "")
@@ -63,7 +70,7 @@ export default class RegistrationForm extends Component {
     }
 
     handleReset(){
-        this.setState({ userName: "", email: "", password: "", name: "", surname: ""});
+        this.setState({email: "", password: "", name: "", surname: ""});
       };
 
     handleSubmit(event) {
@@ -79,36 +86,30 @@ export default class RegistrationForm extends Component {
         return (
             <form className="" autoComplete="off" id="registrationForm">
                 <div className="h2">{strings.titleRegistration}</div>
-                <Input name="userName" 
-                    value={this.state.userName}
-                    onChange={this.handleChangeUserName}
-                    label={strings.userName}
-                    type="text"
-                    required = "true"/>
-                <Input name="email" 
-                    value={this.state.email}
-                    onChange={this.handleChangeEmail}
-                    label={strings.email}
-                    type="email"
-                    required = "true"/>
-                <Input name="password" 
-                    value={this.state.password}
-                    onChange={this.handleChangePassword}
-                    label={strings.password}
-                    type="password"
-                    required = "true"/>
                 <Input name="name" 
                     value={this.state.name}
                     onChange={this.handleChangeName}
                     label={strings.name}
                     type="text"
-                    required = "false"/>
+                    required="true"/>
                 <Input name="surname" 
                     value={this.state.surname}
                     onChange={this.handleChangeSurname}
                     label={strings.surname}
                     type="text"
-                    required = "false"/>
+                    required="true"/>
+                <Input name="email" 
+                    value={this.state.email}
+                    onChange={this.handleChangeEmail}
+                    label={strings.email}
+                    type="email"
+                    required="true"/>
+                <Input name="password" 
+                    value={this.state.password}
+                    onChange={this.handleChangePassword}
+                    label={strings.password}
+                    type="password"
+                    required="true"/>
                 <input type="submit" className="btn btn-sm btn-light" value={strings.register} onClick={this.handleSubmit} />
             </form>
         );

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import validator from 'validator';
 import strings from '../localization/Localization.js';
+import IconButton from "@material-ui/core/IconButton";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 export default class Input extends Component {
     constructor(props) {
@@ -10,7 +13,9 @@ export default class Input extends Component {
             isValid: false,
             validInfo: "",
             required: false,
-            reqStar: ""
+            reqStar: "",
+            password: "",
+            showPassword: false,
         };
         if (this.props.required === 'true'){
             this.state.required = true;
@@ -44,7 +49,17 @@ export default class Input extends Component {
             
             break;
           case 'password':
-            isValid = value.length >= 6;
+            isValid = true;
+            if (value.length < 8)
+                isValid = false;
+            if (!/\d/.test(value))
+                isValid = false;
+            if (value.toUpperCase() === value)
+                isValid = false;
+            if (value.toLowerCase() === value)
+                isValid = false;
+            if (!/[ `!@#$%^&*()_+\-={};':"\\|,.<>/?~]/.test(value))
+                isValid = false;
             validInfo = isValid ? '': strings.invalidPassword;
             this.setState({
                 isValid: isValid,
@@ -74,25 +89,71 @@ export default class Input extends Component {
         this.props.onChange(value, validInfo, isValid);
       }
 
+      handleClickShowPassword= (event) =>{
+        this.setState({
+            showPassword: !this.state.showPassword
+         })
+      };
+      
+      handleMouseDownPassword = (event) => {
+        event.preventDefault();
+      };
+      
+      handlePasswordChange = (prop) => (event) => {
+        this.setState({
+            [prop]: event.target.value 
+         })
+      };
+
     render() {
         const { name, label, type} = this.props;
-        
-        return (
-            <div className="row inputGroup">
-                <label htmlFor={name} className="inputLabel">
-                    {label} <span className="text-danger">{this.state.reqStar}</span>
-                </label>
-                <div>
-                <input id={name} name={name}
-                        value={this.state.value} 
-                        onChange={this.handleChange}
-                        type={type}
-                        required={this.state.required}
-                        className="form-control input"
-                        />
-                <div className="text-danger inputValidate">{this.state.validInfo} </div>
+
+        if(name === 'password'){
+            return (
+                <div className="row inputGroup">
+                    <label htmlFor={name} className="inputLabel">
+                        {label} <span className="text-danger">{this.state.reqStar}</span>
+                    </label>
+                    <div>
+                        <div className="passInputGroup">
+                        <input id={name} name={name}
+                            value={this.state.value} 
+                            onChange={this.handleChange}
+                            type={this.state.showPassword ? "text" : "password"}
+                            required={this.state.required}
+                            className="form-control input inputPass"
+                            style={{paddingRight:0}}
+                            />
+                        <IconButton
+                            onClick={this.handleClickShowPassword}
+                            onMouseDown={this.handleMouseDownPassword}
+                            >
+                            {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
+                        </div>
+                        <div className="text-danger inputValidate">{this.state.validInfo} </div>
+                    </div>
                 </div>
-            </div>
         );
+        } else {
+            return (
+                <div className="row inputGroup">
+                    <label htmlFor={name} className="inputLabel">
+                        {label} <span className="text-danger">{this.state.reqStar}</span>
+                    </label>
+                    <div>
+                        <input id={name} name={name}
+                            value={this.state.value} 
+                            onChange={this.handleChange}
+                            type={type}
+                            required={this.state.required}
+                            className="form-control input"
+                            />
+                        <div className="text-danger inputValidate">{this.state.validInfo} </div>
+                    </div>
+                </div>
+        );
+        }
+        
     }
 }

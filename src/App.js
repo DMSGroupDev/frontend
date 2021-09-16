@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import RegistrationForm from './form/Registration.js';
 import Message from './common/Message.js';
-import './App.css';
+import './css/App.css';
+import './css/Form.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import strings from './localization/Localization.js';
