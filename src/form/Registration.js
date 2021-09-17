@@ -14,12 +14,14 @@ export default class RegistrationForm extends Component {
             surname: "",
             email: "", 
             password: "",
+            captcha: "",
             isValidForm: false,
             isValidEmail: false,
             isValidPassword: false,
             isValidName: false,
             isValidSurname: false,
-            validInfo: "",
+            isValidCaptcha: false,
+            validInfo: strings.invalidName + " " + strings.invalidSurname +  " " + strings.invalidEmail + " " + strings.invalidPassword + " " + strings.invalidCaptcha,
             result: null,
             show: true};
 
@@ -27,21 +29,24 @@ export default class RegistrationForm extends Component {
         const handleChangePassword = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidPassword: isValid});
         const handleChangeName = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidName: isValid});
         const handleChangeSurname = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidSurname: isValid});
+        const handleChangeCaptcha = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidCaptcha: isValid});
         this.handleChangeEmail = handleChangeEmail.bind(this, 'email');
         this.handleChangePassword = handleChangePassword.bind(this, 'password');
         this.handleChangeName = handleChangeName.bind(this, 'name');
         this.handleChangeSurname = handleChangeSurname.bind(this, 'surname');
+        this.handleChangeCaptcha = handleChangeCaptcha.bind(this, 'captcha');
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     validate() {
         let info = "";
-        if (this.state.isValidName && this.state.isValidSurname && this.state.isValidEmail && this.state.isValidPassword)
+        if (this.state.isValidName && this.state.isValidSurname && this.state.isValidEmail && this.state.isValidPassword && this.state.isValidCaptcha)
         {
+
             // TODO check unique email and newUserName
             let newUserName = this.state.surname.substring(0,5).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") + this.state.name.substring(0,3).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
             info = this.state.name + ' ' + this.state.surname + strings.resultSuccess + newUserName;
-            this.setState({ show: false });
+            this.setState({ show: false, isValidForm: true });
 
             // TODO SEND DATA TO DB
             return ([info, false]);
@@ -64,6 +69,11 @@ export default class RegistrationForm extends Component {
                     info += ", ";
                 info += strings.invalidPassword
             }
+            if (!this.state.isValidCaptcha) {
+                if (info !== "")
+                    info += ", ";
+                info += strings.invalidCaptcha
+            }
             this.setState({ show: true });
             return ([info, true]);
         }
@@ -78,7 +88,8 @@ export default class RegistrationForm extends Component {
         var result = this.validate(); 
         this.setState({ result: result[0] });
         this.props.onResultChange(result[0], result[1]);
-        this.handleReset();
+        if (this.state.isValidForm)
+            this.handleReset();
         render()
     }
 
@@ -91,25 +102,30 @@ export default class RegistrationForm extends Component {
                     onChange={this.handleChangeName}
                     label={strings.name}
                     type="text"
-                    required="true"/>
+                    required={true}/>
                 <Input name="surname" 
                     value={this.state.surname}
                     onChange={this.handleChangeSurname}
                     label={strings.surname}
                     type="text"
-                    required="true"/>
+                    required={true}/>
                 <Input name="email" 
                     value={this.state.email}
                     onChange={this.handleChangeEmail}
                     label={strings.email}
                     type="email"
-                    required="true"/>
+                    required={true}/>
                 <Input name="password" 
                     value={this.state.password}
                     onChange={this.handleChangePassword}
                     label={strings.password}
                     type="password"
-                    required="true"/>
+                    required={true}/>
+                <Input name="captcha" 
+                    value=""
+                    onChange={this.handleChangeCaptcha}
+                    label=""
+                    type="captcha"/>
                 <input type="submit" className="btn btn-sm btn-light" value={strings.register} onClick={this.handleSubmit} />
             </form>
         );

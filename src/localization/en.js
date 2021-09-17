@@ -8,6 +8,9 @@ const en = [{
     invalidTextValue: "value is too short",
     invalidName: "name is not valid",
     invalidSurname: "surname is not valid",
+    invalidCaptcha: "captcha does not match",
+    reloadCaptcha: "reload captcha",
+    enterCaptcha: "enter captcha value",
 
     // registration form
     titleRegistration: "User registration",
