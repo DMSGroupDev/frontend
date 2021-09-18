@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import Input from './Input';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
 import { render } from '@testing-library/react';
 import strings from '../localization/Localization.js';
 
-export default class RegistrationForm extends Component {
+export default class Registration extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            userName: "", 
+        this.state = {
+            userName: "",
             name: "",
             surname: "",
-            email: "", 
+            email: "",
             password: "",
             captcha: "",
             isValidForm: false,
@@ -21,15 +19,16 @@ export default class RegistrationForm extends Component {
             isValidName: false,
             isValidSurname: false,
             isValidCaptcha: false,
-            validInfo: strings.invalidName + " " + strings.invalidSurname +  " " + strings.invalidEmail + " " + strings.invalidPassword + " " + strings.invalidCaptcha,
+            validInfo: strings.invalidName + " " + strings.invalidSurname + " " + strings.invalidEmail + " " + strings.invalidPassword + " " + strings.invalidCaptcha,
             result: null,
-            show: true};
+            show: true
+        };
 
-        const handleChangeEmail = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidEmail: isValid});
-        const handleChangePassword = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidPassword: isValid});
-        const handleChangeName = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidName: isValid});
-        const handleChangeSurname = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidSurname: isValid});
-        const handleChangeCaptcha = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidCaptcha: isValid});
+        const handleChangeEmail = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidEmail: isValid });
+        const handleChangePassword = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidPassword: isValid });
+        const handleChangeName = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidName: isValid });
+        const handleChangeSurname = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidSurname: isValid });
+        const handleChangeCaptcha = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidCaptcha: isValid });
         this.handleChangeEmail = handleChangeEmail.bind(this, 'email');
         this.handleChangePassword = handleChangePassword.bind(this, 'password');
         this.handleChangeName = handleChangeName.bind(this, 'name');
@@ -40,21 +39,20 @@ export default class RegistrationForm extends Component {
 
     validate() {
         let info = "";
-        if (this.state.isValidName && this.state.isValidSurname && this.state.isValidEmail && this.state.isValidPassword && this.state.isValidCaptcha)
-        {
+        if (this.state.isValidName && this.state.isValidSurname && this.state.isValidEmail && this.state.isValidPassword && this.state.isValidCaptcha) {
 
             // TODO check unique email and newUserName
-            let newUserName = this.state.surname.substring(0,5).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") + this.state.name.substring(0,3).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-            info = this.state.name + ' ' + this.state.surname + strings.resultSuccess + newUserName;
+            let newUserName = this.state.surname.substring(0, 5).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") + this.state.name.substring(0, 3).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            info = this.state.name + ' ' + this.state.surname + strings.registrationSuccess + newUserName;
             this.setState({ show: false, isValidForm: true });
 
             // TODO SEND DATA TO DB
             return ([info, false]);
         } else {
-            if(!this.state.isValidName) {
+            if (!this.state.isValidName) {
                 info = strings.invalidName;
             }
-            if(!this.state.isValidSurname) {
+            if (!this.state.isValidSurname) {
                 if (info !== "")
                     info += ", ";
                 info += strings.invalidSurname;
@@ -79,63 +77,61 @@ export default class RegistrationForm extends Component {
         }
     }
 
-    handleReset(){
-        this.setState({email: "", password: "", name: "", surname: ""});
-      };
+    handleReset() {
+        this.setState({ email: "", password: "", name: "", surname: "", captcha: "" });
+    };
 
     handleSubmit(event) {
         event.preventDefault();
-        var result = this.validate(); 
+        var result = this.validate();
         this.setState({ result: result[0] });
-        this.props.onResultChange(result[0], result[1]);
+        this.props.onResultChange(result[0], result[1], !result[1], '');
         if (this.state.isValidForm)
             this.handleReset();
         render()
     }
 
-    handleSetLanguageEn () {
-        strings.setLanguage('en');
-        console.log('en')
-    };
-    handleSetLanguageCs (){
-        strings.setLanguage('cs');
-        console.log('cs')
-    };
+    toLogin() {
+        this.props.onResultChange('', !this.state.show, this.state.show, '');
+        render();
+    }
 
     render() {
         return (
             <form className="" autoComplete="off" id="registrationForm">
                 <div className="h2">{strings.titleRegistration}</div>
-                <Input name="name" 
+                <Input name="name"
                     value={this.state.name}
                     onChange={this.handleChangeName}
                     label={strings.name}
                     type="text"
-                    required={true}/>
-                <Input name="surname" 
+                    required={true} />
+                <Input name="surname"
                     value={this.state.surname}
                     onChange={this.handleChangeSurname}
                     label={strings.surname}
                     type="text"
-                    required={true}/>
-                <Input name="email" 
+                    required={true} />
+                <Input name="email"
                     value={this.state.email}
                     onChange={this.handleChangeEmail}
                     label={strings.email}
                     type="email"
-                    required={true}/>
-                <Input name="password" 
+                    required={true} />
+                <Input name="password"
                     value={this.state.password}
                     onChange={this.handleChangePassword}
                     label={strings.password}
                     type="password"
-                    required={true}/>
-                <Input name="captcha" 
+                    required={true} />
+                <Input name="captcha"
                     value=""
                     onChange={this.handleChangeCaptcha}
                     label=""
-                    type="captcha"/>
+                    type="captcha" />
                 <input type="submit" className="btn btn-sm btn-light" value={strings.register} onClick={this.handleSubmit} />
+                <div className="formRedirect">{strings.backToLogin}</div>
+                <button type="button" className="btn btn-sm btn-light" onClick={() => this.toLogin()}> {strings.toLogin} </button>
             </form>
         );
     }

@@ -1,7 +1,6 @@
 const en = [{
     title: "DMS",
-    toRegistration: "to registration",
-
+    
     // input validate
     invalidEmail: "email format is invalid",
     passwordInfo: "password must contain uppercase and lowercase letter, a number and a special character and must be longer than 7 characters",
@@ -21,7 +20,20 @@ const en = [{
     email: "Email",
     register: "Register",
     password: "Password",
-    resultSuccess: " is new registered user with username ",
+    registrationSuccess: " is new registered user with username ",
+    backToLogin: "Do you already have an account?",
+    toLogin: "To login",
+
+    //login
+    titleLogin: "Login user",
+    login: "Login",
+    loginSuccess: "login was successful",
+    loginError: "username or password is incorrect",
+    newRegistration: "Don't have a login yet?",
+    toRegistration: "To registration",
+
+    //account
+    titleAccount: "Test page allowed just after login",
 }];
 
 export default en;

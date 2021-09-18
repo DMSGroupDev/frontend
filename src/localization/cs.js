@@ -1,7 +1,6 @@
 const en = [{
     title: "DMS",
-    toRegistration: "k registraci",
-
+    
     // input validate
     invalidEmail: "formát emailu není validní",
     passwordInfo: "heslo musí obsahovat velké a malé písmeno, číslo a speciální znak a musí být delší než 7 znaků",
@@ -15,14 +14,26 @@ const en = [{
 
     // registration form
     titleRegistration: "Registrace uživatele",
-    userName: "Uživatelské jméno",
+    userName: "Jméno",
     name: "Jméno",
     surname: "Příjmení",
     email: "Email",
     password: "Heslo",
     register: "Registrovat",
-    resultSuccess: " je nově registrovaný uživatel s uživatelským jménem ",
-    
+    registrationSuccess: " je nově registrovaný uživatel s uživatelským jménem ",
+    backToLogin: "Máte již přihlašovací údaje?",
+    toLogin: "Přihlásit se",
+
+    //login
+    titleLogin: "Přihlášení",
+    login: "Přihlásit",
+    loginSuccess: "přihlášení bylo úspěšné",
+    loginError: "přihlašovací údaje nesouhlasí",
+    newRegistration: "Ještě nemáte přihlašovací údaje?",
+    toRegistration: "Zaregistrovat",
+
+    //account
+    titleAccount: "Testová stránka přístupná pouze po přihlášení",
 }];
 
 export default en;
