@@ -111,7 +111,14 @@ export default class Input extends Component {
       }
 
       handleClickReloadCaptcha= (event) =>{
+        let isValid = this.state.isValid;
+        let validInfo = this.state.validInfo;
         loadCaptchaEnginge(6); 
+        this.setState({
+            isValid: false,
+            validInfo: strings.invalidCaptcha
+         })
+         this.props.onChange(validInfo, isValid);
       };
 
       handleClickShowPassword= (event) =>{

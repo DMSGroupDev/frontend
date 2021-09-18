@@ -1,5 +1,6 @@
 const en = [{
     title: "DMS",
+    toRegistration: "to registration",
 
     // input validate
     invalidEmail: "email format is invalid",

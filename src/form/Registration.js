@@ -93,6 +93,15 @@ export default class RegistrationForm extends Component {
         render()
     }
 
+    handleSetLanguageEn () {
+        strings.setLanguage('en');
+        console.log('en')
+    };
+    handleSetLanguageCs (){
+        strings.setLanguage('cs');
+        console.log('cs')
+    };
+
     render() {
         return (
             <form className="" autoComplete="off" id="registrationForm">

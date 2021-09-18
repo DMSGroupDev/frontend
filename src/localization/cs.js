@@ -1,16 +1,11 @@
 const en = [{
     title: "DMS",
+    toRegistration: "k registraci",
 
     // input validate
     invalidEmail: "formát emailu není validní",
     passwordInfo: "heslo musí obsahovat velké a malé písmeno, číslo a speciální znak a musí být delší než 7 znaků",
     invalidPassword: "formát hesla není validní",
-    passInfo: "",
-    passInfoUpper: "",
-    passInfoLower: "",
-    passInfoNumber: "",
-    passInfoSpecial: "",
-    passInfoLength: "",
     invalidTextValue: "hodnota je příliš krátká",
     invalidName: "uživatelské jméno není validní",
     invalidSurname: "uživatelské jméno není validní",

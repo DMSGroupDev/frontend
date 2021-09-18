@@ -1,0 +1,11 @@
+.btn-lng{
+    background-color: white;
+    color:lightgray;
+    border: none;
+}
+
+.btn-lng-active{
+    color:gray !important;
+}
+
+  
