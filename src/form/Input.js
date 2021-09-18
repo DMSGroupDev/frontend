@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import validator from 'validator';
 import strings from '../localization/Localization.js';
+import IconButton from "@material-ui/core/IconButton";
+import Visibility from "@material-ui/icons/Visibility";
+import HelpIcon from "@material-ui/icons/HelpOutline";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import ReplayIcon from "@material-ui/icons/Replay";
+import ReactTooltip from 'react-tooltip';
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha} from 'react-simple-captcha';
 
 export default class Input extends Component {
     constructor(props) {
@@ -10,9 +17,11 @@ export default class Input extends Component {
             isValid: false,
             validInfo: "",
             required: false,
-            reqStar: ""
+            reqStar: "",
+            password: "",
+            showPassword: false,
         };
-        if (this.props.required === 'true'){
+        if (this.props.required === true){
             this.state.required = true;
             this.state.reqStar = "*"
             } else {
@@ -41,16 +50,43 @@ export default class Input extends Component {
                 validInfo: validInfo,
                 reqStar: "*"
             })
-            
             break;
           case 'password':
-            isValid = value.length >= 6;
+            isValid = true;
+            if (value.length < 8)
+                isValid = false;
+            if (!/\d/.test(value))
+                isValid = false;
+            if (value.toUpperCase() === value)
+                isValid = false;
+            if (value.toLowerCase() === value)
+                isValid = false;
+            if (!/[ `!@#$%^&*()_+\-={};':"\\|,.<>/?~]/.test(value))
+                isValid = false;
             validInfo = isValid ? '': strings.invalidPassword;
             this.setState({
                 isValid: isValid,
                 validInfo: validInfo,
                 reqStar: "*"
             })
+            break;
+        case 'captcha':
+            if (validateCaptcha(value, false)) {
+                isValid = true;
+                validInfo = '';
+                this.setState({
+                    isValid: isValid,
+                    validInfo: validInfo
+                })
+            }
+            else {
+                isValid = false;
+                validInfo = strings.invalidCaptcha;
+                this.setState({
+                    isValid: isValid,
+                    validInfo: validInfo
+                })
+            }
             break;
           default:
             if(!required){
@@ -74,25 +110,110 @@ export default class Input extends Component {
         this.props.onChange(value, validInfo, isValid);
       }
 
+      handleClickReloadCaptcha= (event) =>{
+        let isValid = this.state.isValid;
+        let validInfo = this.state.validInfo;
+        loadCaptchaEnginge(6); 
+        this.setState({
+            isValid: false,
+            validInfo: strings.invalidCaptcha
+         })
+         this.props.onChange(validInfo, isValid);
+      };
+
+      handleClickShowPassword= (event) =>{
+        this.setState({
+            showPassword: !this.state.showPassword
+         })
+      };
+      
+      handleMouseDownPassword = (event) => {
+        event.preventDefault();
+      };
+      
+      componentDidMount () {
+        loadCaptchaEnginge(6); 
+        document.getElementById("reload_href").style.display = "none";
+     };
+
     render() {
         const { name, label, type} = this.props;
-        
-        return (
-            <div className="row inputGroup">
-                <label htmlFor={name} className="inputLabel">
-                    {label} <span className="text-danger">{this.state.reqStar}</span>
-                </label>
-                <div>
-                <input id={name} name={name}
-                        value={this.state.value} 
-                        onChange={this.handleChange}
-                        type={type}
-                        required={this.state.required}
-                        className="form-control input"
-                        />
-                <span className="text-danger">{this.state.validInfo} </span>
-                </div>
-            </div>
-        );
+
+        switch(name) {
+            case 'password':
+                return (
+                    <div className="row inputGroup">
+                        <label htmlFor={name} className="inputLabel">
+                            {label} <span className="text-danger">{this.state.reqStar}</span>
+                            <span className="infoToolTip" data-tip={strings.passwordInfo}><HelpIcon /><ReactTooltip type="light" border borderColor="lightgray" textColor="gray"/></span>
+                        </label>
+                        <div>
+                            <div className="passInputGroup">
+                                <input id={name} name={name}
+                                    value={this.state.value} 
+                                    onChange={this.handleChange}
+                                    type={this.state.showPassword ? "text" : "password"}
+                                    required={this.state.required}
+                                    className="form-control input inputPass"
+                                    style={{paddingRight:0}}
+                                    />
+                                <IconButton
+                                    onClick={this.handleClickShowPassword}
+                                    onMouseDown={this.handleMouseDownPassword}
+                                    >
+                                    {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                            </div>
+                            <div className="text-danger inputValidate">{this.state.validInfo} </div>
+                        </div>
+                    </div>);
+            case 'captcha':
+                return (
+                    <div className="row inputGroup">
+                        <label htmlFor={name} className="inputLabel">
+                            {label} <span className="text-danger">{this.state.reqStar}</span>
+                        </label>
+                        <div>
+                            <input id={name} name={name}
+                            value={this.state.value} 
+                            onChange={this.handleChange}
+                            type="text"
+                            required={true}
+                            className="form-control input inputCaptcha"
+                            placeholder={strings.enterCaptcha}
+                            />
+                            <div className="passInputCaptcha">
+                                <LoadCanvasTemplate reloadText={strings.ReloadCaptcha} reloadColor="gray"/>
+                                <div className="captchaBtn">
+                                    <IconButton
+                                    onClick={this.handleClickReloadCaptcha}
+                                    >
+                                    {<ReplayIcon />}
+                                    </IconButton>
+                                </div>
+                            </div>
+                            <div className="text-danger inputValidate">{this.state.validInfo} </div>
+                        </div>
+                    </div>
+                );
+            default:
+                return (
+                    <div className="row inputGroup">
+                        <label htmlFor={name} className="inputLabel">
+                            {label} <span className="text-danger">{this.state.reqStar}</span>
+                        </label>
+                        <div>
+                            <input id={name} name={name}
+                                value={this.state.value} 
+                                onChange={this.handleChange}
+                                type={type}
+                                required={this.state.required}
+                                className="form-control input"
+                                />
+                            <div className="text-danger inputValidate">{this.state.validInfo} </div>
+                        </div>
+                    </div>
+                );          
+        }
     }
 }
