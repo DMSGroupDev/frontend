@@ -20,8 +20,13 @@ export default class Login extends Component {
         const handleChangePassword = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidPassword: isValid });
         const handleChangeName = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidName: isValid });
         this.handleChangePassword = handleChangePassword.bind(this, 'password');
-        this.handleChangeName = handleChangeName.bind(this, 'name');
+        this.handleChangeName = handleChangeName.bind(this, 'userName');
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    setUser(userToken, userName) {
+        sessionStorage.setItem('userToken', userToken);
+        sessionStorage.setItem('userName', userName);
     }
 
     validate() {
@@ -31,8 +36,10 @@ export default class Login extends Component {
             info = strings.loginSuccess;
             this.setState({ show: false, isValidForm: true });
 
-            // TODO SET TOKEN
-            return ([info, false, false, 'testToken123']);
+            // TODO GET TOKEN
+            const userName = this.state.userName
+            this.setUser('testToken123', userName);
+            return ([info, false, false]);
         } else {
             if (!this.state.isValidName) {
                 info = strings.invalidName;
@@ -46,7 +53,7 @@ export default class Login extends Component {
                 info += ", ";
             info += strings.loginError
             this.setState({ show: true });
-            return ([info, true, false, '']);
+            return ([info, true, false]);
         }
     }
 
@@ -56,9 +63,9 @@ export default class Login extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        var result = this.validate();
+        const result = this.validate();
         this.setState({ result: result[0] });
-        this.props.onResultChange(result[0], result[1], result[2], result[3]);
+        this.props.onResultChange(result[0], result[1], result[2]);
         if (this.state.isValidForm)
             this.handleReset();
         render()
@@ -85,7 +92,7 @@ export default class Login extends Component {
                     type="password"
                     required={true} />
                 <input type="submit" className="btn btn-sm btn-light" value={strings.login} onClick={this.handleSubmit} />
-                <div className="formRedirect">{strings.newRegistration}</div>
+                <div className="p-1">{strings.newRegistration}</div>
                 <button className="btn btn-sm btn-light" onClick={() => this.toRegistration()}> {strings.toRegistration} </button>
             </form>
         );

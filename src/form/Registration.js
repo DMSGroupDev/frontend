@@ -83,7 +83,7 @@ export default class Registration extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        var result = this.validate();
+        const result = this.validate();
         this.setState({ result: result[0] });
         this.props.onResultChange(result[0], result[1], !result[1], '');
         if (this.state.isValidForm)
@@ -130,7 +130,7 @@ export default class Registration extends Component {
                     label=""
                     type="captcha" />
                 <input type="submit" className="btn btn-sm btn-light" value={strings.register} onClick={this.handleSubmit} />
-                <div className="formRedirect">{strings.backToLogin}</div>
+                <div className="p-1">{strings.backToLogin}</div>
                 <button type="button" className="btn btn-sm btn-light" onClick={() => this.toLogin()}> {strings.toLogin} </button>
             </form>
         );

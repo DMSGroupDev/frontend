@@ -4,22 +4,29 @@ import strings from '../localization/Localization.js';
 export default class SwitchLanguage extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            language: 'en',
-        };
         this.handleSetLanguageEn = this.handleSetLanguageEn.bind(this);
         this.handleSetLanguageCs = this.handleSetLanguageCs.bind(this);
     }
 
     componentDidMount () {
-        this.handleSetLanguageEn();
+        const language = sessionStorage.getItem('language');
+        switch (language) {
+            case 'en':
+                this.handleSetLanguageEn();
+                break
+            case 'cs' :
+                this.handleSetLanguageCs();
+                break
+            default:
+                this.handleSetLanguageEn();
+                break
+        }
+        
     };
 
     handleSetLanguageEn () {
         strings.setLanguage('en');
-        this.setState({
-            language: 'en'
-        });
+        sessionStorage.setItem('language', 'en');
         document.getElementById("btn-cs").classList.remove("btn-lng-active")
         document.getElementById("btn-en").classList.add("btn-lng-active")
         this.props.onLanguageChange('en');
@@ -27,9 +34,7 @@ export default class SwitchLanguage extends Component {
     
     handleSetLanguageCs () {
         strings.setLanguage('cs');
-        this.setState({
-            language: 'cs'
-        });
+        sessionStorage.setItem('language', 'cs');
         document.getElementById("btn-en").classList.remove("btn-lng-active")
         document.getElementById("btn-cs").classList.add("btn-lng-active")
         this.props.onLanguageChange('cs');

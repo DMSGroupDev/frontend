@@ -31,6 +31,7 @@ const en = [{
     loginError: "přihlašovací údaje nesouhlasí",
     newRegistration: "Ještě nemáte přihlašovací údaje?",
     toRegistration: "Zaregistrovat",
+    logout: "Odhlásit",
 
     //account
     titleAccount: "Testová stránka přístupná pouze po přihlášení",

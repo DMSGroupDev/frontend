@@ -31,6 +31,7 @@ const en = [{
     loginError: "username or password is incorrect",
     newRegistration: "Don't have a login yet?",
     toRegistration: "To registration",
+    logout: "Logout",
 
     //account
     titleAccount: "Test page allowed just after login",
