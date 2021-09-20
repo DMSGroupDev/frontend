@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import RegistrationForm from './form/Registration.js';
-import Login from './form/Login.js';
-import Account from './sites/Account.js';
-import Message from './common/Message.js';
+import RegistrationForm from './components/form/Registration.js';
+import Login from './components/form/Login.js';
+import Message from './components/common/Message.js';
 import './css/App.css';
 import './css/Form.css';
 import './css/SwitchLanguage.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import strings from './localization/Localization.js';
-import SwitchLanguage from './common/SwitchLanguage.js';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import SwitchLanguage from './components/common/SwitchLanguage.js';
+import { BrowserRouter, Switch } from 'react-router-dom';
+import Account from './pages/Account.js';
+import Admin from './pages/Admin.js';
+import RoleBasedRouting from './helpers/RoleBaseRouting.js'
 
 export default class App extends Component {
   constructor(props) {
@@ -26,15 +28,15 @@ export default class App extends Component {
   }
 
   getUser() {
-    const userToken = sessionStorage.getItem('userToken');
-    const userName = sessionStorage.getItem('userName');
+    const userToken = localStorage.getItem('userToken');
+    const userName = localStorage.getItem('userName');
     return [(userToken != null ? userToken : ''), (userName != null ? userName : '')]
   }
 
   logout() {
-    const language = sessionStorage.getItem('language');
-    sessionStorage.clear();
-    sessionStorage.setItem('language', language);
+    const language = localStorage.getItem('language');
+    localStorage.clear();
+    localStorage.setItem('language', language);
     window.location.reload();
   }
 
@@ -62,7 +64,7 @@ export default class App extends Component {
     const userData = this.getUser();
     const userToken = userData[0];
     const userName = userData[1];
-    const language = sessionStorage.getItem('language');
+    const language = localStorage.getItem('language');
     if (!userToken) {
       return (
         <div className="App">
@@ -88,9 +90,8 @@ export default class App extends Component {
         <input type="submit" className="btn btn-sm btn-light m-1" value={strings.logout} onClick={this.logout} />
         <BrowserRouter>
           <Switch>
-            <Route path="/account">
-              <Account onResultChange={this.propagateMessage} />
-            </Route>
+            <RoleBasedRouting exact path="/admin" component={Admin} roles={['ROLE_ADMIN']} />
+            <RoleBasedRouting exact path="/account" component={Account} roles={['ROLE_USER']} />
           </Switch>
         </BrowserRouter>
       </div>

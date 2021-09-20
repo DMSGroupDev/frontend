@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import strings from '../localization/Localization.js';
+import strings from '../../localization/Localization.js';
 
 export default class SwitchLanguage extends Component {
     constructor(props) {
@@ -9,7 +9,7 @@ export default class SwitchLanguage extends Component {
     }
 
     componentDidMount () {
-        const language = sessionStorage.getItem('language');
+        const language = localStorage.getItem('language');
         switch (language) {
             case 'en':
                 this.handleSetLanguageEn();
@@ -26,7 +26,7 @@ export default class SwitchLanguage extends Component {
 
     handleSetLanguageEn () {
         strings.setLanguage('en');
-        sessionStorage.setItem('language', 'en');
+        localStorage.setItem('language', 'en');
         document.getElementById("btn-cs").classList.remove("btn-lng-active")
         document.getElementById("btn-en").classList.add("btn-lng-active")
         this.props.onLanguageChange('en');
@@ -34,7 +34,7 @@ export default class SwitchLanguage extends Component {
     
     handleSetLanguageCs () {
         strings.setLanguage('cs');
-        sessionStorage.setItem('language', 'cs');
+        localStorage.setItem('language', 'cs');
         document.getElementById("btn-en").classList.remove("btn-lng-active")
         document.getElementById("btn-cs").classList.add("btn-lng-active")
         this.props.onLanguageChange('cs');

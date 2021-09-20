@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Input from './Input';
 import { render } from '@testing-library/react';
-import strings from '../localization/Localization.js';
+import strings from '../../localization/Localization.js';
 
 export default class Login extends Component {
     constructor(props) {
@@ -25,8 +25,10 @@ export default class Login extends Component {
     }
 
     setUser(userToken, userName) {
-        sessionStorage.setItem('userToken', userToken);
-        sessionStorage.setItem('userName', userName);
+        localStorage.setItem('userToken', userToken);
+        localStorage.setItem('userName', userName);
+        const roles = [{userRoles: 'ROLE_ADMIN'}, {userRoles: 'ROLE_USER'}]
+        localStorage.setItem('userRoles', JSON.stringify(roles));
     }
 
     validate() {
@@ -53,7 +55,7 @@ export default class Login extends Component {
                 info += ", ";
             info += strings.loginError
             this.setState({ show: true });
-            return ([info, true, false]);
+            return ([info, false, true]);
         }
     }
 

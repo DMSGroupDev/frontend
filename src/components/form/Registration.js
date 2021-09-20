@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Input from './Input';
 import { render } from '@testing-library/react';
-import strings from '../localization/Localization.js';
+import strings from '../../localization/Localization.js';
 
 export default class Registration extends Component {
     constructor(props) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import validator from 'validator';
-import strings from '../localization/Localization.js';
+import strings from '../../localization/Localization.js';
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import HelpIcon from "@material-ui/icons/HelpOutline";
