@@ -1,47 +1,50 @@
-.inputGroup{
-    display:flex;
+.inputGroup {
+    display: flex;
     justify-content: flex-start;
     align-items: center;
-  }
-  
-.inputLabel{
-    text-align: left;
-    min-width: 100px;
-    margin-bottom:1.2em;
-  }
-  
-.input{
-    min-width: 200px;
-  }
-
-.inputCaptcha{
-  margin-bottom: 5px;
 }
 
-.inputValidate{
-    min-height:1.4em;
+.inputLabel {
+    text-align: left;
+    min-width: 100px;
+    margin-bottom: 1.2em;
+}
+
+.input {
+    min-width: 200px;
+}
+
+.inputCaptcha {
+    margin-bottom: 5px;
+}
+
+.inputValidate {
+    min-height: 1.4em;
     font-size: 0.8em;
     text-align: left;
     padding-left: 10px;
-  }
-  
-.passInputGroup{
-  display: flex;
-  flex-wrap: nowrap;
-}
-.passInputCaptcha{
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-}
-.captchaBtn{
-  display: flex;
-  align-items: flex-start;
-}
-.MuiIconButton-root{
-  padding:5px !important;
 }
 
-.infoToolTip{
-  color:lightgray;
+.passInputGroup {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.passInputCaptcha {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.captchaBtn {
+    display: flex;
+    align-items: flex-start;
+}
+
+.MuiIconButton-root {
+    padding: 5px !important;
+}
+
+.infoToolTip {
+    color: lightgray;
 }
