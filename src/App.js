@@ -13,10 +13,6 @@ import { BrowserRouter, Switch } from 'react-router-dom';
 import Account from './pages/Account.js';
 import AdminPage from './pages/Admin.js';
 import RoleBasedRouting from './helpers/RoleBaseRouting.js'
-import { Admin, Resource, ListGuesser } from 'react-admin';
-import jsonServerProvider from 'ra-data-json-server';
-
-const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 
 export default class App extends Component {
   constructor(props) {
