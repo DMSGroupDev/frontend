@@ -33,8 +33,8 @@ const en = [{
     toRegistration: "Zaregistrovat",
     logout: "Odhlásit",
 
-    //account
-    titleAccount: "Testová stránka přístupná pouze po přihlášení",
+    //administration
+    titleAdministration: "Administrace",
 }];
 
 export default en;

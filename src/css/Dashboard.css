@@ -1,0 +1,28 @@
+.dashboardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+.boxContainter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 93vw;
+    padding: 0 0.3vw;
+}
+
+.box {
+    display: flex;
+    width: 12vw;
+    height: 12vw;
+    border: 1px solid gray;
+    margin: 0.5vw;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border-radius: 5px;
+}

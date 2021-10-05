@@ -33,8 +33,8 @@ const en = [{
     toRegistration: "To registration",
     logout: "Logout",
 
-    //account
-    titleAccount: "Test page allowed just after login",
+    //administration
+    titleAdministration: "Administration",
 }];
 
 export default en;

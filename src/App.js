@@ -5,14 +5,16 @@ import Message from './components/common/Message.js';
 import './css/App.css';
 import './css/Form.css';
 import './css/SwitchLanguage.css';
+import './css/Dashboard.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import strings from './localization/Localization.js';
 import SwitchLanguage from './components/common/SwitchLanguage.js';
-import { BrowserRouter, Switch } from 'react-router-dom';
-import Account from './pages/Account.js';
-import AdminPage from './pages/Admin.js';
+import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
+import Dashboard from './pages/Dashboard.js';
+import AdminPage from './pages/Administration.js';
 import RoleBasedRouting from './helpers/RoleBaseRouting.js'
+import AccountIcon from "@material-ui/icons/AccountBox";
 
 export default class App extends Component {
   constructor(props) {
@@ -68,8 +70,16 @@ export default class App extends Component {
     if (!userToken) {
       return (
         <div className="App">
-          <h1>{strings.title}</h1>
-          <SwitchLanguage value={language} onLanguageChange={this.propagateLanguage} />
+          <div className="logLine">
+            <div className="logLeft">
+              <div className="textCentered">
+                <SwitchLanguage value={language} onLanguageChange={this.propagateLanguage} />
+              </div>
+            </div>
+            <div className="logCenter">{strings.title}</div>
+            <div className="logRight">
+            </div>
+          </div>
           <div className="text-secondary message"><Message value={this.state.message} /></div>
           {!showHideRegistrationForm && (
             <div>
@@ -82,20 +92,29 @@ export default class App extends Component {
     }
     return (
       <div className="App">
-        <h1>{strings.title}</h1>
-        <SwitchLanguage value={language} onLanguageChange={this.propagateLanguage} />
+        <div className="logLine">
+          <div className="logLeft">
+              <SwitchLanguage value={language} onLanguageChange={this.propagateLanguage} />
+          </div>
+          <div className="logCenter">{strings.title}</div>
+          <div className="logRight">
+            <div className="textCentered">
+              <AccountIcon />&nbsp;{userName}
+            </div>
+            <div>
+              <button type="submit" className="btn btn-sm btnLight" onClick={this.logout}> {strings.logout} </button>
+            </div>
+          </div>
+        </div>
         <div className="text-secondary message"><Message value={this.state.message} /></div>
-        <div>First info after login</div>
-        <div>You are logged like {userName}</div>
-        <input type="submit" className="btn btn-sm btn-light m-1" value={strings.logout} onClick={this.logout} />
-        <BrowserRouter>
+        <BrowserRouter exact path="/">
+          <Redirect to="/dashboard" />
           <Switch>
-            <RoleBasedRouting exact path="/admin" component={AdminPage} roles={['ROLE_ADMIN']} />
-            <RoleBasedRouting exact path="/account" component={Account} roles={['ROLE_USER']} />
+            <RoleBasedRouting exact path="/dashboard" component={Dashboard} roles={['ROLE_USER', 'ROLE_ADMIN']} />
+            <RoleBasedRouting exact path="/administration" component={AdminPage} roles={['ROLE_ADMIN']} />
           </Switch>
         </BrowserRouter>
       </div>
     );
   }
 }
-
