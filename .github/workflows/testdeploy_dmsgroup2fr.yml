@@ -60,4 +60,4 @@ jobs:
         app-name: 'dmsgroup2fr'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_b79a20a1831e4bc1981d5dc645a379fd }}
-        package: .
+        package: build
