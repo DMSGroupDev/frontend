@@ -16,7 +16,6 @@ export default class Login extends Component {
             result: null,
             show: true
         };
-
         const handleChangePassword = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidPassword: isValid });
         const handleChangeName = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidName: isValid });
         this.handleChangePassword = handleChangePassword.bind(this, 'password');
@@ -24,11 +23,13 @@ export default class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    setUser(userToken, userName) {
-        localStorage.setItem('userToken', userToken);
+    setUser(userToken, userName, roles) {
         localStorage.setItem('userName', userName);
-        const roles = [{userRoles: 'ROLE_ADMIN'}, {userRoles: 'ROLE_USER'}]
-        localStorage.setItem('userRoles', JSON.stringify(roles));
+        localStorage.setItem('userToken', userToken);
+        localStorage.setItem('auth', userToken);
+        localStorage.setItem('permissions', JSON.stringify(roles));
+        // TODO pokud nemá žádnou doménu přesměruje na create domain
+        window.location.href = "/dashboard";
     }
 
     validate() {
@@ -40,7 +41,9 @@ export default class Login extends Component {
 
             // TODO GET TOKEN
             const userName = this.state.userName
-            this.setUser('testToken123', userName);
+            const roles = ['ROLE_ADMIN', 'ROLE_USER']
+            this.setUser('testToken123', userName, roles);
+           
             return ([info, false, false]);
         } else {
             if (!this.state.isValidName) {

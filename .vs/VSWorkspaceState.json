@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\admin",
+    "\\src\\components\\common",
+    "\\src\\components\\form",
+    "\\src\\css",
+    "\\src\\helpers",
+    "\\src\\localization",
+    "\\src\\pages"
+  ],
+  "SelectedNode": "\\src\\helpers\\AuthProvider.js",
+  "PreviewInSolutionExplorer": false
+}
