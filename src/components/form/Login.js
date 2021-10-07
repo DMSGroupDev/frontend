@@ -29,7 +29,7 @@ export default class Login extends Component {
         localStorage.setItem('auth', userToken);
         localStorage.setItem('permissions', JSON.stringify(roles));
         // TODO pokud nemá žádnou doménu přesměruje na create domain
-        window.location.href = "/dashboard";
+        window.location.href = "/";
     }
 
     validate() {
@@ -43,7 +43,7 @@ export default class Login extends Component {
             const userName = this.state.userName
             const roles = ['ROLE_ADMIN', 'ROLE_USER']
             this.setUser('testToken123', userName, roles);
-           
+
             return ([info, false, false]);
         } else {
             if (!this.state.isValidName) {
