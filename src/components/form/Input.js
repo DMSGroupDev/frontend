@@ -154,7 +154,7 @@ export default class Input extends Component {
                                     onChange={this.handleChange}
                                     type={this.state.showPassword ? "text" : "password"}
                                     required={this.state.required}
-                                    className="inputPass"
+                                    className="inputPass width300"
                                     style={{ paddingRight: 0 }}
                                     variant="outlined"
                                     label={label}
@@ -187,7 +187,7 @@ export default class Input extends Component {
                                 onChange={this.handleChange}
                                 type="text"
                                 required={true}
-                                className="inputCaptcha"
+                                className="inputCaptcha width300"
                                 placeholder={strings.enterCaptcha}
                                 variant="outlined"
                                 label={label}
@@ -217,6 +217,7 @@ export default class Input extends Component {
                                 onChange={this.handleChange}
                                 type={type}
                                 required={this.state.required}
+                                className="width300"
                                 variant="outlined"
                                 label={label}
                             />

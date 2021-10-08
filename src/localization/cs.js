@@ -6,8 +6,8 @@ const en = [{
     passwordInfo: "heslo musí obsahovat velké a malé písmeno, číslo a speciální znak a musí být delší než 7 znaků",
     invalidPassword: "formát hesla není validní",
     invalidTextValue: "hodnota je příliš krátká",
-    invalidName: "uživatelské jméno není validní",
-    invalidSurname: "uživatelské jméno není validní",
+    invalidName: "jméno je příliš krátké",
+    invalidSurname: "příjmení je příliš krátké",
     invalidCaptcha: "captcha se neschoduje",
     reloadCaptcha: "znovu načíst captchu",
     enterCaptcha: "zadejte hodnotu captcha",
@@ -21,16 +21,15 @@ const en = [{
     password: "Heslo",
     register: "Registrovat",
     registrationSuccess: " je nově registrovaný uživatel s uživatelským jménem ",
-    backToLogin: "Máte již přihlašovací údaje?",
+    backToLogin: "Máte již přihlašovací údaje? Přihlašte se",
     toLogin: "Přihlásit se",
 
     //login
     titleLogin: "Přihlášení",
     login: "Přihlásit",
-    loginSuccess: "přihlášení bylo úspěšné",
-    loginError: "přihlašovací údaje nesouhlasí",
-    newRegistration: "Ještě nemáte přihlašovací údaje?",
-    toRegistration: "Zaregistrovat",
+    loginSuccess: "Přihlášení bylo úspěšné",
+    loginError: "Přihlašovací údaje nesouhlasí",
+    newRegistration: "Ještě nemáte účet? Registrujte se",
     logout: "Odhlásit",
 
     //administration

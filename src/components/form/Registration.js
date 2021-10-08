@@ -131,9 +131,8 @@ export default class Registration extends Component {
                     label="Captcha"
                     type="captcha"
                     required={true} />
-                <Button type="submit" onClick={this.handleSubmit} variant="contained"> {strings.register} </Button>
-                <div className="p-1">{strings.backToLogin}</div>
-                <Button type="button" onClick={() => this.toLogin()} variant="contained"> {strings.toLogin} </Button>
+                <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300"> {strings.register} </Button>
+                <div className="divLink" onClick={() => this.toLogin()} variant="contained"> {strings.backToLogin} </div>
             </form>
         );
     }

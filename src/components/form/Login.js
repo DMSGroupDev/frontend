@@ -90,16 +90,15 @@ export default class Login extends Component {
                     onChange={this.handleChangeName}
                     label={strings.userName}
                     type="text"
-                    required={true}/>
+                    required={true} />
                 <Input name="password"
                     value={this.state.password}
                     onChange={this.handleChangePassword}
                     label={strings.password}
                     type="password"
-                    required={true}/>
-                <Button type="submit" onClick={this.handleSubmit} variant="contained"> {strings.login} </Button>
-                <div className="p-1">{strings.newRegistration}</div>
-                <Button onClick={() => this.toRegistration()} variant="contained"> {strings.toRegistration} </Button>
+                    required={true} />
+                <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300"> {strings.login} </Button>
+                <div className="divLink" onClick={() => this.toRegistration()} variant="contained"> {strings.newRegistration} </div>
             </form>
         );
     }
