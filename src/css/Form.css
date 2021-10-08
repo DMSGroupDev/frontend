@@ -41,10 +41,11 @@
     align-items: flex-start;
 }
 
-.MuiIconButton-root {
-    padding: 5px !important;
-}
-
 .infoToolTip {
     color: lightgray;
+}
+
+.inputPadding {
+    width: 50px;
+    margin-top: 0.7em !important;
 }
