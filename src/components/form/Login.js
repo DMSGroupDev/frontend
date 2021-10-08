@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Input from './Input';
 import { render } from '@testing-library/react';
 import strings from '../../localization/Localization.js';
+import Button from '@mui/material/Button';
 
 export default class Login extends Component {
     constructor(props) {
@@ -83,22 +84,22 @@ export default class Login extends Component {
     render() {
         return (
             <form className="" id="loginForm">
-                <div className="h2">{strings.titleLogin}</div>
+                <div className="h3">{strings.titleLogin}</div>
                 <Input name="userName"
                     value={this.state.userName}
                     onChange={this.handleChangeName}
                     label={strings.userName}
                     type="text"
-                    required={true} />
+                    required={true}/>
                 <Input name="password"
                     value={this.state.password}
                     onChange={this.handleChangePassword}
                     label={strings.password}
                     type="password"
-                    required={true} />
-                <input type="submit" className="btn btn-sm btn-light" value={strings.login} onClick={this.handleSubmit} />
+                    required={true}/>
+                <Button type="submit" onClick={this.handleSubmit} variant="contained"> {strings.login} </Button>
                 <div className="p-1">{strings.newRegistration}</div>
-                <button className="btn btn-sm btn-light" onClick={() => this.toRegistration()}> {strings.toRegistration} </button>
+                <Button onClick={() => this.toRegistration()} variant="contained"> {strings.toRegistration} </Button>
             </form>
         );
     }

@@ -64,15 +64,15 @@ export default class InitUser extends Component {
 
         return (
             <div className="initUser">
-                <div>
-                <div><SwitchLanguage value={language} onLanguageChange={this.propagateLanguage} /></div>
                 <div className="text-secondary message"><Message value={this.state.message} /></div>
-                {!showHideRegistrationForm && (
-                    <div>
-                        <Login onResultChange={this.propagateMessage} />
+                <div>
+                    <div><SwitchLanguage value={language} onLanguageChange={this.propagateLanguage} /></div>
+                    {!showHideRegistrationForm && (
+                        <div>
+                            <Login onResultChange={this.propagateMessage} />
 
-                    </div>)}
-                {showHideRegistrationForm && (<RegistrationForm onResultChange={this.propagateMessage} />)}
+                        </div>)}
+                    {showHideRegistrationForm && (<RegistrationForm onResultChange={this.propagateMessage} />)}
                 </div>
             </div>
         )

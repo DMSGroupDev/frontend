@@ -8,6 +8,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import ReplayIcon from "@material-ui/icons/Replay";
 import ReactTooltip from 'react-tooltip';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import TextField from '@mui/material/TextField';
 
 export default class Input extends Component {
     constructor(props) {
@@ -145,26 +146,33 @@ export default class Input extends Component {
             case 'password':
                 return (
                     <div className="row inputGroup">
-                        <label htmlFor={name} className="inputLabel">
-                            {label} <span className="text-danger">{this.state.reqStar}</span>
-                            <span className="infoToolTip" data-tip={strings.passwordInfo}><HelpIcon /><ReactTooltip type="light" border borderColor="lightgray" textColor="gray" /></span>
-                        </label>
+                        <div className="inputPadding"></div>
                         <div>
                             <div className="passInputGroup">
-                                <input id={name} name={name}
+                                <TextField id={name} name={name}
                                     value={this.state.value}
                                     onChange={this.handleChange}
                                     type={this.state.showPassword ? "text" : "password"}
                                     required={this.state.required}
-                                    className="form-control input inputPass"
+                                    className="inputPass"
                                     style={{ paddingRight: 0 }}
+                                    variant="outlined"
+                                    label={label}
                                 />
-                                <IconButton
-                                    onClick={this.handleClickShowPassword}
-                                    onMouseDown={this.handleMouseDownPassword}
-                                >
-                                    {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-                                </IconButton>
+                                <div className="inputPadding">
+                                    <span className="infoToolTip" data-tip={strings.passwordInfo}>
+                                        <HelpIcon />
+                                        <ReactTooltip type="light" border borderColor="lightgray" textColor="gray" />
+                                    </span>
+                                    <div className="passVisible">
+                                        <IconButton
+                                            onClick={this.handleClickShowPassword}
+                                            onMouseDown={this.handleMouseDownPassword}
+                                        >
+                                            {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton>
+                                    </div>
+                                </div>
                             </div>
                             <div className="text-danger inputValidate">{this.state.validInfo} </div>
                         </div>
@@ -172,17 +180,17 @@ export default class Input extends Component {
             case 'captcha':
                 return (
                     <div className="row inputGroup">
-                        <label htmlFor={name} className="inputLabel">
-                            {label} <span className="text-danger">{this.state.reqStar}</span>
-                        </label>
-                        <div>
-                            <input id={name} name={name}
+                        <div className="inputPadding"></div>
+                        <div>                        
+                            <TextField id={name} name={name}
                                 value={this.state.value}
                                 onChange={this.handleChange}
                                 type="text"
                                 required={true}
-                                className="form-control input inputCaptcha"
+                                className="inputCaptcha"
                                 placeholder={strings.enterCaptcha}
+                                variant="outlined"
+                                label={label}
                             />
                             <div className="passInputCaptcha">
                                 <LoadCanvasTemplate reloadText={strings.ReloadCaptcha} reloadColor="gray" />
@@ -196,24 +204,25 @@ export default class Input extends Component {
                             </div>
                             <div className="text-danger inputValidate">{this.state.validInfo} </div>
                         </div>
+                        <div className="inputPadding"></div>
                     </div>
                 );
             default:
                 return (
                     <div className="row inputGroup">
-                        <label htmlFor={name} className="inputLabel">
-                            {label} <span className="text-danger">{this.state.reqStar}</span>
-                        </label>
+                        <div className="inputPadding"></div>
                         <div>
-                            <input id={name} name={name}
+                            <TextField id={name} name={name}
                                 value={this.state.value}
                                 onChange={this.handleChange}
                                 type={type}
                                 required={this.state.required}
-                                className="form-control input"
+                                variant="outlined"
+                                label={label}
                             />
                             <div className="text-danger inputValidate">{this.state.validInfo} </div>
                         </div>
+                        <div className="inputPadding"></div>
                     </div>
                 );
         }

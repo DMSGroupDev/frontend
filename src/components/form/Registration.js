@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Input from './Input';
 import { render } from '@testing-library/react';
 import strings from '../../localization/Localization.js';
+import Button from '@mui/material/Button';
 
 export default class Registration extends Component {
     constructor(props) {
@@ -99,7 +100,7 @@ export default class Registration extends Component {
     render() {
         return (
             <form className="" autoComplete="off" id="registrationForm">
-                <div className="h2">{strings.titleRegistration}</div>
+                <div className="h3">{strings.titleRegistration}</div>
                 <Input name="name"
                     value={this.state.name}
                     onChange={this.handleChangeName}
@@ -127,11 +128,12 @@ export default class Registration extends Component {
                 <Input name="captcha"
                     value=""
                     onChange={this.handleChangeCaptcha}
-                    label=""
-                    type="captcha" />
-                <input type="submit" className="btn btn-sm btn-light" value={strings.register} onClick={this.handleSubmit} />
+                    label="Captcha"
+                    type="captcha"
+                    required={true} />
+                <Button type="submit" onClick={this.handleSubmit} variant="contained"> {strings.register} </Button>
                 <div className="p-1">{strings.backToLogin}</div>
-                <button type="button" className="btn btn-sm btn-light" onClick={() => this.toLogin()}> {strings.toLogin} </button>
+                <Button type="button" onClick={() => this.toLogin()} variant="contained"> {strings.toLogin} </Button>
             </form>
         );
     }
