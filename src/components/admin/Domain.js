@@ -8,7 +8,7 @@ const Title = ({ record }) => {
     };
 
 const filters = [
-    <TextInput source="q" label="Search" alwaysOn />,
+    <TextInput source="q" label="Search" alwaysOn variant="outlined"/>,
 ];
 
 export const DomainList = ({...props }) => {
@@ -36,8 +36,8 @@ export const DomainList = ({...props }) => {
 export const DomainEdit = props => (
     <Edit title={<Title />} {...props}>
         <SimpleForm>
-            <TextInput disabled source="id" />
-            <TextInput source="username" label="Domain name"/>
+            <TextInput disabled source="id" variant="outlined"/>
+            <TextInput source="username" label="Domain name" variant="outlined"/>
         </SimpleForm>
     </Edit>
 );
@@ -45,7 +45,7 @@ export const DomainEdit = props => (
 export const DomainCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="username" label="Domain name"/>
+            <TextInput source="username" label="Domain name" variant="outlined"/>
         </SimpleForm>
     </Create>
 );
