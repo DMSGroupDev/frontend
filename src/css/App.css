@@ -43,6 +43,12 @@ code {
     padding: 10px;
 }
 
+.divLink {
+    padding: 10px;
+    text-decoration: underline;
+    cursor: pointer
+}
+
 .m-1 {
     margin: 10px;
 }
