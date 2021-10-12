@@ -8,8 +8,8 @@ const Title = ({ record }) => {
     };
 
 const filters = [
-    <TextInput source="q" label="Search" alwaysOn />,
-    <ReferenceInput source="userId" label="User" reference="users" allowEmpty>
+    <TextInput source="q" label="Search" alwaysOn variant="outlined" size="small"/>,
+    <ReferenceInput source="userId" label="User" reference="users" allowEmpty variant="outlined">
         <SelectInput optionText="name" />
     </ReferenceInput>,
 ];

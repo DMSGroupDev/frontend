@@ -10,10 +10,6 @@
     margin-bottom: 1.2em;
 }
 
-.input {
-    min-width: 200px;
-}
-
 .inputCaptcha {
     margin-bottom: 5px;
 }
@@ -47,7 +43,7 @@
 
 .inputPadding {
     width: 50px;
-    margin-top: 0.7em !important;
+    margin-top: 1.2em !important;
 }
 
 .width300 {

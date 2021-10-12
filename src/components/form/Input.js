@@ -9,6 +9,7 @@ import ReplayIcon from "@material-ui/icons/Replay";
 import ReactTooltip from 'react-tooltip';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import TextField from '@mui/material/TextField';
+import MyTheme from '../common/MyTheme.js';
 
 export default class Input extends Component {
     constructor(props) {
@@ -141,7 +142,7 @@ export default class Input extends Component {
 
     render() {
         const { name, label, type } = this.props;
-
+        
         switch (name) {
             case 'password':
                 return (
@@ -158,6 +159,7 @@ export default class Input extends Component {
                                     style={{ paddingRight: 0 }}
                                     variant="outlined"
                                     label={label}
+                                    theme={MyTheme}
                                 />
                                 <div className="inputPadding">
                                     <span className="infoToolTip" data-tip={strings.passwordInfo}>
@@ -191,6 +193,7 @@ export default class Input extends Component {
                                 placeholder={strings.enterCaptcha}
                                 variant="outlined"
                                 label={label}
+                                theme={MyTheme}
                             />
                             <div className="passInputCaptcha">
                                 <LoadCanvasTemplate reloadText={strings.ReloadCaptcha} reloadColor="gray" />
@@ -220,6 +223,7 @@ export default class Input extends Component {
                                 className="width300"
                                 variant="outlined"
                                 label={label}
+                                theme={MyTheme}
                             />
                             <div className="text-danger inputValidate">{this.state.validInfo} </div>
                         </div>
