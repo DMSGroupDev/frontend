@@ -9,6 +9,7 @@ import { UserList, UserEdit, UserCreate } from './components/admin/User';
 import UserIcon from '@material-ui/icons/Group';
 import DomainIcon from '@material-ui/icons/Domain';
 import MyLayout from './components/common/MyLayout.js'
+import MyTheme from './components/common/MyTheme.js';
 import './css/MuiCustom.css';
 
 const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
@@ -17,6 +18,7 @@ const App = () => (
             loginPage={LoginPage}
             dashboard={Dashboard}
             layout={MyLayout}
+            theme={MyTheme}
             authProvider={authProvider}
             dataProvider={dataProvider}
         >

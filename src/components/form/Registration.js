@@ -3,6 +3,7 @@ import Input from './Input';
 import { render } from '@testing-library/react';
 import strings from '../../localization/Localization.js';
 import Button from '@mui/material/Button';
+import MyTheme from '../common/MyTheme.js';
 
 export default class Registration extends Component {
     constructor(props) {
@@ -131,7 +132,7 @@ export default class Registration extends Component {
                     label="Captcha"
                     type="captcha"
                     required={true} />
-                <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300"> {strings.register} </Button>
+                <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300" theme={MyTheme}> {strings.register} </Button>
                 <div className="divLink" onClick={() => this.toLogin()} variant="contained"> {strings.backToLogin} </div>
             </form>
         );
