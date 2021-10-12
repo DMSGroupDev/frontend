@@ -1,8 +1,7 @@
 import * as React from "react";
 import { useMediaQuery } from '@material-ui/core';
-import { List, Edit, Create, Datagrid, SimpleList, TextField, EmailField, EditButton, DeleteButton, TextInput, SimpleForm, ReferenceInput, SelectInput} from 'react-admin';
+import { List, Edit, Create, Datagrid, SimpleList, TextField, EmailField, UrlField, EditButton, DeleteButton, TextInput, SimpleForm, ReferenceInput, SelectInput} from 'react-admin';
 import { usePermissions } from 'react-admin';
-import MyUrlField from "../common/MyUrlField";
 
 const Title = ({ record }) => {
         return <span>User {record ? `"${record.name}"` : ''}</span>;
@@ -34,7 +33,7 @@ export const UserList = ({...props }) => {
                     <EmailField source="email" />
                     {/*<TextField source="address.street" />*/}
                     <TextField source="phone" />
-                    <MyUrlField source="website" />
+                    <UrlField source="website" />
                     <TextField source="company.name" />
                     {permissions && <EditButton />}
                     {permissions && <DeleteButton />}
@@ -46,14 +45,14 @@ export const UserList = ({...props }) => {
 export const UserEdit = props => (
     <Edit title={<Title />} {...props}>
         <SimpleForm>
-            <TextInput disabled source="id" />
-            <TextInput source="name" />
-            <TextInput source="username" />
-            <TextInput source="email" />
-            <TextInput source="address.street" />
-            <TextInput source="phone" />
-            <TextInput source="website" />
-            <TextInput source="company.name" />
+            <TextInput disabled source="id" variant="outlined"/>
+            <TextInput source="name" variant="outlined"/>
+            <TextInput source="username" variant="outlined"/>
+            <TextInput source="email" variant="outlined"/>
+            <TextInput source="address.street" variant="outlined"/>
+            <TextInput source="phone" variant="outlined"/>
+            <TextInput source="website" variant="outlined"/>
+            <TextInput source="company.name" variant="outlined"/>
         </SimpleForm>
     </Edit>
 );
@@ -61,13 +60,13 @@ export const UserEdit = props => (
 export const UserCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="name" />
-            <TextInput source="username" />
-            <TextInput source="email" />
-            <TextInput source="address.street" />
-            <TextInput source="phone" />
-            <TextInput source="website" />
-            <TextInput source="company.name" />
+            <TextInput source="name" variant="outlined"/>
+            <TextInput source="username" variant="outlined"/>
+            <TextInput source="email" variant="outlined"/>
+            <TextInput source="address.street" variant="outlined"/>
+            <TextInput source="phone" variant="outlined"/>
+            <TextInput source="website" variant="outlined"/>
+            <TextInput source="company.name" variant="outlined"/>
         </SimpleForm>
     </Create>
 );

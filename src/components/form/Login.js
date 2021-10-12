@@ -3,6 +3,7 @@ import Input from './Input';
 import { render } from '@testing-library/react';
 import strings from '../../localization/Localization.js';
 import Button from '@mui/material/Button';
+import MyTheme from '../common/MyTheme.js';
 
 export default class Login extends Component {
     constructor(props) {
@@ -97,7 +98,7 @@ export default class Login extends Component {
                     label={strings.password}
                     type="password"
                     required={true} />
-                <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300"> {strings.login} </Button>
+                <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300" theme={MyTheme}> {strings.login} </Button>
                 <div className="divLink" onClick={() => this.toRegistration()} variant="contained"> {strings.newRegistration} </div>
             </form>
         );

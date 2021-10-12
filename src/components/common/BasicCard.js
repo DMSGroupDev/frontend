@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
+import MyTheme from './MyTheme.js';
 
 const bull = (
     <Box
@@ -20,7 +21,7 @@ const BasicCard = ({...props}) => {
     const { name, description, link, url} = props;
 
     return (
-        <Card sx={{ width:200, mt:2, ml:2, mb:2 }}>
+        <Card theme={MyTheme} sx={{ width:200, mt:2, ml:2, mb:2 }}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     {name}
@@ -30,7 +31,7 @@ const BasicCard = ({...props}) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Link to={url}><Button size="small">{link}</Button></Link>
+                <Link to={url}><Button size="small" theme={MyTheme}>{link}</Button></Link>
             </CardActions>
         </Card>
     );
