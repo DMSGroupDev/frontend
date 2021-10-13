@@ -32,8 +32,34 @@ const en = [{
     newRegistration: "Don't have an account? Sign Up",
     logout: "Logout",
 
-    //administration
-    titleAdministration: "Administration",
+    //dashboard
+    dashboard: "Dashboard",
+    dashboardTitle: "Welcome to the DMS",
+    dashboardContent: "Now you can create Domain and manage Users...",
+    
+    //users
+    user: "User ",
+    street: "Street",
+    phone: "Phone",
+    website: "Website",
+    companyName: "Company Name",
+    users: "Users",
+    userAdd: "Add user",
+    userEdit: "Edit user",
+    usersDescription: "Manage all users",
+    usersGoTo: "Go to users",
+    
+    //domain
+    domain: "Domain ",
+    domainName: "Domain",
+    domainAdd: "Add Domain ",
+    domainEdit: "Edit Domain",
+    domains: "Domains",
+    domainDescription: "Manage all domains",
+    domainGoTo: "Go to domains",
+    
+    //common
+    search: "Search",
 }];
 
 export default en;

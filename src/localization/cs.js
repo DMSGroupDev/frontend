@@ -32,8 +32,35 @@ const en = [{
     newRegistration: "Ještě nemáte účet? Registrujte se",
     logout: "Odhlásit",
 
-    //administration
-    titleAdministration: "Administrace",
+    //dashboard
+    dashboard: "Dashboard",
+    dashboardTitle: "Vítejte v DMS",
+    dashboardContent: "Nyní můžete vytvářet domény a spravovat uživatele...",
+    
+    //users
+    user: "Uživatel ",
+    street: "Ulice",
+    phone: "Telefon",
+    website: "Webová stránka",
+    companyName: "Společnost",
+    users: "Uživatelé",
+    userAdd: "Nový uživatel",
+    userEdit: "Úprava uživatele",
+    usersDescription: "Spravovat uživatele",
+    usersGoTo: "K uživatelům",
+    
+    //domain
+    domain: "Doména ",
+    domainName: "Jméno domény",
+    domainAdd: "Nová doména",
+    domainEdit: "Úprava domény",
+    domains: "Domény",
+    domainDescription: "Spravovat domény",
+    domainGoTo: "K doménám",
+    
+    //common
+    search: "Vyhledat",
+
 }];
 
 export default en;

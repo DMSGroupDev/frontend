@@ -12,19 +12,19 @@ export default class SwitchLanguage extends Component {
         const language = localStorage.getItem('language');
         switch (language) {
             case 'en':
-                this.handleSetLanguageEn();
+                this.handleSetDefaultLanguageEn();
                 break
             case 'cs' :
-                this.handleSetLanguageCs();
+                this.handleSetDefaultLanguageCs();
                 break
             default:
-                this.handleSetLanguageEn();
+                this.handleSetDefaultLanguageEn();
                 break
         }
         
     };
 
-    handleSetLanguageEn () {
+    handleSetDefaultLanguageEn () {
         strings.setLanguage('en');
         localStorage.setItem('language', 'en');
         document.getElementById("btn-cs").classList.remove("btn-lng-active")
@@ -32,12 +32,30 @@ export default class SwitchLanguage extends Component {
         this.props.onLanguageChange('en');
     };
     
-    handleSetLanguageCs () {
+    handleSetDefaultLanguageCs () {
         strings.setLanguage('cs');
         localStorage.setItem('language', 'cs');
         document.getElementById("btn-en").classList.remove("btn-lng-active")
         document.getElementById("btn-cs").classList.add("btn-lng-active")
         this.props.onLanguageChange('cs');
+    };
+
+    handleSetLanguageEn() {
+        strings.setLanguage('en');
+        localStorage.setItem('language', 'en');
+        document.getElementById("btn-cs").classList.remove("btn-lng-active")
+        document.getElementById("btn-en").classList.add("btn-lng-active")
+        this.props.onLanguageChange('en');
+        window.location.reload(false);
+    };
+
+    handleSetLanguageCs() {
+        strings.setLanguage('cs');
+        localStorage.setItem('language', 'cs');
+        document.getElementById("btn-en").classList.remove("btn-lng-active")
+        document.getElementById("btn-cs").classList.add("btn-lng-active")
+        this.props.onLanguageChange('cs');
+        window.location.reload(false);
     };
     
     render() {
