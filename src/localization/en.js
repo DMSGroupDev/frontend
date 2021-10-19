@@ -60,6 +60,9 @@ const en = [{
     
     //common
     search: "Search",
+
+    //settings
+    settings: "Settings",
 }];
 
 export default en;

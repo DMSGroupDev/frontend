@@ -34,7 +34,7 @@ const App = () => (
             i18nProvider={i18nProvider}
         >
         <Resource name="domains" list={DomainList} edit={DomainEdit} create={DomainCreate} icon={DomainIcon} options={{ label: strings.domains }} />
-        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} options={{ label: strings.users }}/>
+        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} options={{ label: strings.users }} />
         </Admin>
 )
 

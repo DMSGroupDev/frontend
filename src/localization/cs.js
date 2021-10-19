@@ -61,6 +61,9 @@ const en = [{
     //common
     search: "Vyhledat",
 
+    //settings
+    settings: "Nastavení",
+
 }];
 
 export default en;
