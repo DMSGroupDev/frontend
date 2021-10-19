@@ -5,7 +5,6 @@ import { MenuItemLink, getResources } from "react-admin";
 import DefaultIcon from "@material-ui/icons/ViewList";
 import SettingsIcon from "@material-ui/icons/Settings";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-//import HelpIcon from "@material-ui/icons/Help";
 import strings from '../../localization/Localization.js';
 
 
