@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 const MyAppBar = props => {
     const classes = useStyles();
     const [language, setLanguage] = useState(0);
-    const propagateLanguage = (language) => setLanguage({ language });
+    const propagateLanguage = (lang) => setLanguage({ lang });
 
     return (
         <AppBar {...props} userMenu={<MyUserMenu />}>
