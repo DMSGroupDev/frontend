@@ -63,7 +63,11 @@ const en = [{
 
     //settings
     settings: "Nastavení",
-
+    colorSettings: "Nastavení vlastního barevného schématu",
+    colorSave: "Uložit barvy",
+    colorPrimary: "Barva textu",
+    colorSecondary: "Barva hlavičky",
+    colorText: "Pro tento text je použita aktuálně vybraná barva",
 }];
 
 export default en;

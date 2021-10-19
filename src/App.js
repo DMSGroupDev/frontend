@@ -15,6 +15,7 @@ import englishMessages from './localization/englishMessages';
 import czechMessages from './localization/czechMessages';
 import './css/MuiCustom.css';
 import strings from './localization/Localization.js';
+import customRoutes from './helpers/customRoutes';
 
 const messages = {
     cs: czechMessages,
@@ -32,6 +33,7 @@ const App = () => (
             authProvider={authProvider}
             dataProvider={dataProvider}
             i18nProvider={i18nProvider}
+            customRoutes={customRoutes}
         >
         <Resource name="domains" list={DomainList} edit={DomainEdit} create={DomainCreate} icon={DomainIcon} options={{ label: strings.domains }} />
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} options={{ label: strings.users }} />

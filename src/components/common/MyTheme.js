@@ -2,14 +2,24 @@ import { defaultTheme } from "react-admin";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import merge from "lodash/merge";
 
+var primaryColor = "#79B4B7";
+if (localStorage.getItem('primaryColor') !== "undefined") {
+    primaryColor = localStorage.getItem('primaryColor')
+}
+
+var secondaryColor = "#364F6B";
+if (localStorage.getItem('secondaryColor') !== "undefined") {
+    secondaryColor = localStorage.getItem('secondaryColor')
+}
+
 const MyTheme = createMuiTheme(
     merge({}, defaultTheme, {
         palette: {
             primary: {
-                main: "#79B4B7",
+                main: primaryColor,
             },
             secondary: {
-                main: "#364F6B",
+                main: secondaryColor,
             },
             error: {
                 main: "#F39189",

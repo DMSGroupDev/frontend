@@ -37,21 +37,13 @@ const MyMenu = ({ onMenuClick, logout }) => {
             ))}
 
             <MenuItemLink
-                to="/custom-route"
+                key={strings.settings}
+                to="/settings"
                 primaryText={strings.settings}
                 leftIcon={<SettingsIcon />}
                 onClick={onMenuClick}
                 sidebarIsOpen={open}
             />
-            {/*
-            <MenuItemLink
-                to="/help-center"
-                primaryText="Help Center"
-                leftIcon={<HelpIcon />}
-                onClick={onMenuClick}
-                sidebarIsOpen={open}
-            />
-            */}
             {isXSmall && logout}
         </div>
     );

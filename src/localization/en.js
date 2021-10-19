@@ -63,6 +63,11 @@ const en = [{
 
     //settings
     settings: "Settings",
+    colorSettings: "Set your own color scheme",
+    colorSave: "Save colors",
+    colorPrimary: "Color for text",
+    colorSecondary: "Color for header",
+    colorText: "For this text is using currently selected color",
 }];
 
 export default en;
