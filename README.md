@@ -1,3 +1,6 @@
+[![SonarQube](https://github.com/DMSGroupDev/frontend/actions/workflows/sonarcloud.yml/badge.svg?branch=testdeploy)](https://github.com/DMSGroupDev/frontend/actions/workflows/sonarcloud.yml)
+[![Azure Deployment](https://github.com/DMSGroupDev/frontend/actions/workflows/testdeploy_dmsgroup2fr.yml/badge.svg?branch=testdeploy)](https://github.com/DMSGroupDev/frontend/actions/workflows/testdeploy_dmsgroup2fr.yml)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
