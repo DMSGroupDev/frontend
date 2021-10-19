@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useMediaQuery } from '@material-ui/core';
-import { List, Edit, Create, Datagrid, SimpleList, TextField, EmailField, UrlField, EditButton, DeleteButton, TextInput, SimpleForm, ReferenceInput, SelectInput} from 'react-admin';
-import { usePermissions } from 'react-admin';
+import { List, Edit, Create, Datagrid, SimpleList, TextField, EmailField, UrlField, EditButton, DeleteButton, TextInput, SimpleForm, ReferenceInput, SelectInput, usePermissions} from 'react-admin';
 import strings from '../../localization/Localization.js';
 
 const Title = ({ record }) => {

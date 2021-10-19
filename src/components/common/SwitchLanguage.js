@@ -21,8 +21,7 @@ export default class SwitchLanguage extends Component {
                 this.handleSetDefaultLanguageEn();
                 break
         }
-        
-    };
+    }
 
     handleSetDefaultLanguageEn () {
         strings.setLanguage('en');
@@ -30,7 +29,7 @@ export default class SwitchLanguage extends Component {
         document.getElementById("btn-cs").classList.remove("btn-lng-active")
         document.getElementById("btn-en").classList.add("btn-lng-active")
         this.props.onLanguageChange('en');
-    };
+    }
     
     handleSetDefaultLanguageCs () {
         strings.setLanguage('cs');
@@ -38,7 +37,7 @@ export default class SwitchLanguage extends Component {
         document.getElementById("btn-en").classList.remove("btn-lng-active")
         document.getElementById("btn-cs").classList.add("btn-lng-active")
         this.props.onLanguageChange('cs');
-    };
+    }
 
     handleSetLanguageEn() {
         strings.setLanguage('en');
@@ -47,7 +46,7 @@ export default class SwitchLanguage extends Component {
         document.getElementById("btn-en").classList.add("btn-lng-active")
         this.props.onLanguageChange('en');
         window.location.reload(false);
-    };
+    }
 
     handleSetLanguageCs() {
         strings.setLanguage('cs');
@@ -56,7 +55,7 @@ export default class SwitchLanguage extends Component {
         document.getElementById("btn-cs").classList.add("btn-lng-active")
         this.props.onLanguageChange('cs');
         window.location.reload(false);
-    };
+    }
     
     render() {
         return (
