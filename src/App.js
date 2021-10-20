@@ -10,7 +10,18 @@ import UserIcon from '@material-ui/icons/Group';
 import DomainIcon from '@material-ui/icons/Domain';
 import MyLayout from './components/common/MyLayout.js'
 import MyTheme from './components/common/MyTheme.js';
+import polyglotI18nProvider from 'ra-i18n-polyglot';
+import englishMessages from './localization/englishMessages';
+import czechMessages from './localization/czechMessages';
 import './css/MuiCustom.css';
+import strings from './localization/Localization.js';
+import customRoutes from './helpers/customRoutes';
+
+const messages = {
+    cs: czechMessages,
+    en: englishMessages,
+};
+const i18nProvider = polyglotI18nProvider(locale => messages[localStorage.getItem('language')]);
 
 const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 const App = () => (
@@ -21,9 +32,11 @@ const App = () => (
             theme={MyTheme}
             authProvider={authProvider}
             dataProvider={dataProvider}
+            i18nProvider={i18nProvider}
+            customRoutes={customRoutes}
         >
-        <Resource name="domains" list={DomainList} edit={DomainEdit} create={DomainCreate} icon={DomainIcon} />
-        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
+        <Resource name="domains" list={DomainList} edit={DomainEdit} create={DomainCreate} icon={DomainIcon} options={{ label: strings.domains }} />
+        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} options={{ label: strings.users }} />
         </Admin>
 )
 

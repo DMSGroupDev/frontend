@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { AppBar } from 'react-admin';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import MyUserMenu from './MyUserMenu';
+import SwitchLanguage from './SwitchLanguage.js';
 
 const useStyles = makeStyles({
     title: {
@@ -17,7 +19,10 @@ const useStyles = makeStyles({
 });
 
 const MyAppBar = props => {
-    const classes = useStyles();   
+    const classes = useStyles();
+    const [language, setLanguage] = useState(0);
+    const propagateLanguage = (lang) => setLanguage({ lang });
+
     return (
         <AppBar {...props} userMenu={<MyUserMenu />}>
             <Typography
@@ -28,6 +33,7 @@ const MyAppBar = props => {
             />
             DMS
             <span className={classes.spacer} />
+            <SwitchLanguage value={language} onLanguageChange={propagateLanguage} />
         </AppBar>
     );
 };

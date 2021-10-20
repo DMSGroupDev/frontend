@@ -1,3 +1,9 @@
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=DMSGroupDev_frontend&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=DMSGroupDev_frontend)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=DMSGroupDev_frontend&metric=security_rating)](https://sonarcloud.io/dashboard?id=DMSGroupDev_frontend)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=DMSGroupDev_frontend&metric=alert_status)](https://sonarcloud.io/dashboard?id=DMSGroupDev_frontend)
+[![SonarQube](https://github.com/DMSGroupDev/frontend/actions/workflows/sonarcloud.yml/badge.svg?branch=testdeploy)](https://github.com/DMSGroupDev/frontend/actions/workflows/sonarcloud.yml)
+[![Azure Deployment](https://github.com/DMSGroupDev/frontend/actions/workflows/testdeploy_dmsgroup2fr.yml/badge.svg?branch=testdeploy)](https://github.com/DMSGroupDev/frontend/actions/workflows/testdeploy_dmsgroup2fr.yml)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
