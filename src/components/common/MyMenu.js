@@ -5,8 +5,8 @@ import { MenuItemLink, getResources } from "react-admin";
 import DefaultIcon from "@material-ui/icons/ViewList";
 import SettingsIcon from "@material-ui/icons/Settings";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import strings from '../../localization/Localization.js';
-
+import strings from '../../localization/Localization.js'; 
+import MyTheme from '../../components/common/MyTheme.js';
 
 const MyMenu = ({ onMenuClick, logout }) => {
     const isXSmall = useMediaQuery((theme) => theme.breakpoints.down("xs"));
@@ -18,7 +18,7 @@ const MyMenu = ({ onMenuClick, logout }) => {
                 key={strings.dashboard}
                 to="/"
                 primaryText={strings.dashboard}
-                leftIcon={<DashboardIcon />}
+                leftIcon={<DashboardIcon style={{ fill: MyTheme.palette.secondary.main }}/>}
                 onClick={onMenuClick}
                 sidebarIsOpen={open}
                 exact
@@ -30,7 +30,7 @@ const MyMenu = ({ onMenuClick, logout }) => {
                     primaryText={
                         (resource.options && resource.options.label) || resource.name
                     }
-                    leftIcon={resource.icon ? <resource.icon /> : <DefaultIcon />}
+                    leftIcon={resource.icon ? <resource.icon style={{ fill: MyTheme.palette.secondary.main }} /> : <DefaultIcon style={{ fill: MyTheme.palette.secondary.main }} />}
                     onClick={onMenuClick}
                     sidebarIsOpen={open}
                 />
@@ -40,7 +40,7 @@ const MyMenu = ({ onMenuClick, logout }) => {
                 key={strings.settings}
                 to="/settings"
                 primaryText={strings.settings}
-                leftIcon={<SettingsIcon />}
+                leftIcon={<SettingsIcon style={{ fill: MyTheme.palette.secondary.main }} />}
                 onClick={onMenuClick}
                 sidebarIsOpen={open}
             />

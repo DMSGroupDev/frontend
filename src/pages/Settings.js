@@ -4,6 +4,7 @@ import { Card, CardHeader, CardContent } from '@material-ui/core';
 import { Title } from 'react-admin';
 import ColorPicker from 'material-ui-color-picker'
 import Button from '@mui/material/Button';
+import MyTheme from '../components/common/MyTheme.js';
 
 var primaryColor = "#79B4B7";
 if (localStorage.getItem('primaryColor') !== "undefined") {
@@ -37,7 +38,7 @@ export default class Settings extends Component{
         event.preventDefault();
         localStorage.setItem('primaryColor', primaryColor);
         localStorage.setItem('secondaryColor', secondaryColor);
-        // TODO SAVE TO DB
+        // TODO SAVE TO DB and afret login set them into localStorage
         window.location.reload();
     }
 
@@ -68,9 +69,9 @@ export default class Settings extends Component{
                         onChange={color => this.setSecondaryColor(color)}
                     />
                     <br/>
-                    <Button type="submit" onClick={this.handleSubmit} variant="contained" style={{ marginTop: 10 }}> {strings.colorSave} </Button>
+                    <Button type="submit" onClick={this.handleSubmit} variant="contained" style={{ marginTop: 10, backgroundColor: MyTheme.palette.primary.main }}> {strings.colorSave} </Button>
                 </CardContent>               
             </Card >
         )
     }
-};
+}

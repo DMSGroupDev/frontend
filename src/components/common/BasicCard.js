@@ -23,7 +23,7 @@ const BasicCard = ({...props}) => {
     return (
         <Card theme={MyTheme} sx={{ width:200, mt:2, ml:2, mb:2 }}>
             <CardContent>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                <Typography sx={{ fontSize: 14 }} gutterBottom style={{ color: MyTheme.palette.secondary.main }}>
                     {name}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">

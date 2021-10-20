@@ -7,7 +7,7 @@ const Title = ({ record }) => {
         return <span>{strings.userEdit} {record ? `"${record.name}"` : ''}</span>;
     };
 
-const filters = [
+var filters = [
     <TextInput source="q" label={strings.search} alwaysOn variant="outlined" size="small"/>,
     <ReferenceInput source="userId" label={strings.user} reference="users" allowEmpty variant="outlined">
         <SelectInput optionText="name" />
