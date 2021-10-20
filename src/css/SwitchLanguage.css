@@ -1,9 +1,9 @@
 .btn-lng {
-    background-color: white;
-    color: lightgray;
+    background-color: transparent;
+    color: gray !important;
     border: none;
 }
 
 .btn-lng-active {
-    color: gray !important;
+    color: lightgray !important;
 }

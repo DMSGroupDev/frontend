@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^12.8.3",
     "bootstrap": "^3.4.1",
     "localization": "^1.0.2",
+    "material-ui-color-picker": "^3.5.1",
     "mocha": "^9.1.2",
     "prop-types": "^15.7.2",
     "ra-data-json-server": "^3.18.2",

@@ -81,7 +81,7 @@ export default class Registration extends Component {
 
     handleReset() {
         this.setState({ email: "", password: "", name: "", surname: "", captcha: "" });
-    };
+    }
 
     handleSubmit(event) {
         event.preventDefault();

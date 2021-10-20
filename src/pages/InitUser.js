@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 //import strings from '../localization/Localization.js';
 import SwitchLanguage from '../components/common/SwitchLanguage.js';
+import MyTheme from '../components/common/MyTheme.js';
 
 export default class InitUser extends Component {
     constructor(props) {
@@ -63,7 +64,7 @@ export default class InitUser extends Component {
         const language = localStorage.getItem('language');
 
         return (
-            <div className="initUser">
+            <div className="initUser" theme={MyTheme}>
                 <div className="text-secondary message"><Message value={this.state.message} /></div>
                 <div>
                     <div><SwitchLanguage value={language} onLanguageChange={this.propagateLanguage} /></div>
