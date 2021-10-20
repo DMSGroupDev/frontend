@@ -1,4 +1,4 @@
-const en = [{
+const cs = [{
     title: "DMS",
     
     // input validate
@@ -70,4 +70,4 @@ const en = [{
     colorText: "Pro tento text je použita aktuálně vybraná barva",
 }];
 
-export default en;
+export default cs;
