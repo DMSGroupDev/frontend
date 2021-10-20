@@ -66,8 +66,8 @@ export default class Login extends Component {
 
     handleReset() {
         this.setState({ password: "", userName: "" });
-    };
-
+    }
+    
     handleSubmit(event) {
         event.preventDefault();
         const result = this.validate();

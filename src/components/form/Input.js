@@ -121,24 +121,24 @@ export default class Input extends Component {
             validInfo: strings.invalidCaptcha
         })
         this.props.onChange(validInfo, isValid);
-    };
+    }
 
     handleClickShowPassword = (event) => {
         this.setState({
             showPassword: !this.state.showPassword
         })
-    };
+    }
 
     handleMouseDownPassword = (event) => {
         event.preventDefault();
-    };
+    }
 
     componentDidMount() {
         if (this.props.name === 'captcha') {
             loadCaptchaEnginge(6);
             document.getElementById("reload_href").style.display = "none";
         }
-    };
+    }
 
     render() {
         const { name, label, type } = this.props;
