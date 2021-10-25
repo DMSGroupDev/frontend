@@ -34,7 +34,7 @@ const authProvider = {
             return Promise.reject(error);
         }
     },
-    checkAuth: () => localStorage.getItem('auth') ? Promise.resolve() : Promise.reject({ message: 'login.required' }),
+    checkAuth: () => (localStorage.getItem('auth') ? Promise.resolve() : Promise.reject({ message: 'login.required' })),
 
     getPermissions: (params) => {
         const role = localStorage.getItem('permissions');

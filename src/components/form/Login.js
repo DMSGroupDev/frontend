@@ -30,8 +30,13 @@ export default class Login extends Component {
         localStorage.setItem('userToken', userToken);
         localStorage.setItem('auth', userToken);
         localStorage.setItem('permissions', JSON.stringify(roles));
-        // TODO pokud nemá žádnou doménu přesměruje na create domain
-        window.location.href = "/";
+        // TODO pokud má již vytvořenou doménu, uloží ji do localStorage
+        if (localStorage.getItem('domainName') !== "undefined" && localStorage.getItem('domainName') != null) {
+            window.location.href = "/";
+        } else {
+            window.location.href = "/#/my-profile";
+        }
+
     }
 
     validate() {

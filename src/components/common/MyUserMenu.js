@@ -1,6 +1,7 @@
 import React from "react";
 import { UserMenu, MenuItemLink } from "react-admin";
 import SettingsIcon from "@material-ui/icons/Settings";
+import strings from '../../localization/Localization.js';
 
 const MyUserMenu = (props) => {
     const userName = localStorage.getItem('userName');
@@ -9,7 +10,7 @@ const MyUserMenu = (props) => {
             <UserMenu {...props}>
                 <MenuItemLink
                     to="/my-profile"
-                    primaryText="My Profile"
+                    primaryText={strings.myProfile}
                     leftIcon={<SettingsIcon />}
                 />
                 {userName}

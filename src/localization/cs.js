@@ -57,6 +57,12 @@ const cs = [{
     domains: "Domény",
     domainDescription: "Spravovat domény",
     domainGoTo: "K doménám",
+    domainSave: "Uložit doménu",
+    domainCreate: "Vytvoření domény",
+    domainTitle: "Vítejte ve webové aplikaci DMS!",
+    domainInfo: "Jako první krok si prosím vytvořte název domény (například jméno firmy), která bude zastřešovat veškerou další práci s dokumenty a uživateli.",
+    domainNotice: "Po validaci jména a uložení nebude možné název domény změnit",
+    domainEmpty: "Název domény nesmí být prázdný",
     
     //common
     search: "Vyhledat",
@@ -68,6 +74,10 @@ const cs = [{
     colorPrimary: "Barva textu",
     colorSecondary: "Barva hlavičky",
     colorText: "Pro tento text je použita aktuálně vybraná barva",
+
+    //myProfile
+    myProfile: "Můj profil",
+    profilSave: "Uložit změny",
 }];
 
 export default cs;
