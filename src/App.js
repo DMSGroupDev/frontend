@@ -4,10 +4,8 @@ import jsonServerProvider from 'ra-data-json-server';
 import Dashboard from './pages/Dashboard';
 import authProvider from './helpers/authProvider.js';
 import LoginPage from './pages/InitUser.js';
-import { DomainList, DomainEdit, DomainCreate } from './components/admin/Domain';
 import { UserList, UserEdit, UserCreate } from './components/admin/User';
 import UserIcon from '@material-ui/icons/Group';
-import DomainIcon from '@material-ui/icons/Domain';
 import MyLayout from './components/common/MyLayout.js'
 import MyTheme from './components/common/MyTheme.js';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
@@ -35,7 +33,6 @@ const App = () => (
             i18nProvider={i18nProvider}
             customRoutes={customRoutes}
         >
-        <Resource name="domains" list={DomainList} edit={DomainEdit} create={DomainCreate} icon={DomainIcon} options={{ label: strings.domains }} />
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} options={{ label: strings.users }} />
         </Admin>
 )

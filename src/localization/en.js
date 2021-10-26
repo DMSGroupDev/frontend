@@ -51,12 +51,18 @@ const en = [{
     
     //domain
     domain: "Domain ",
-    domainName: "Domain",
+    domainName: "Domain Name",
     domainAdd: "Add Domain ",
     domainEdit: "Edit Domain",
     domains: "Domains",
     domainDescription: "Manage all domains",
     domainGoTo: "Go to domains",
+    domainSave: "Create domain",
+    domainCreate: "Create domain",
+    domainTitle: "Welcome to the DMS web application!",
+    domainInfo: "As a first step, please create a domain name (for example a business name) that will cover all other work with documents and users.",
+    domainNotice: "Once the name is validated and saved, it will not be possible to change the domain name",
+    domainEmpty: "Domain name cannot be empty",
     
     //common
     search: "Search",
@@ -68,6 +74,10 @@ const en = [{
     colorPrimary: "Color for text",
     colorSecondary: "Color for header",
     colorText: "For this text is using currently selected color",
+
+    //myProfile
+    myProfile: "My profile",
+    profilSave: "Save Changes",
 }];
 
 export default en;

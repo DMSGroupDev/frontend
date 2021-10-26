@@ -27,7 +27,12 @@ const MyTheme = createMuiTheme(
             },
             error: {
                 main: "#F39189",
-            }
+            },
+            warning: {
+                light: "#ffcc80",
+                main: "#ffb74d",
+                dark: "#ff9800"
+            },
         },
         typography: {
             fontSize: 18,
