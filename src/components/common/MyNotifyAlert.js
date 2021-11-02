@@ -8,7 +8,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function CustomizedSnackbars(props) {
+export default function MyNotifyAlert(props) {
     const [open, setOpen] = React.useState(false);
     if (!open && props.showAlert)
         setOpen(true);

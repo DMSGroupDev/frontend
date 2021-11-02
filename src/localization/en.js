@@ -48,6 +48,19 @@ const en = [{
     userEdit: "Edit user",
     usersDescription: "Manage all users",
     usersGoTo: "Go to users",
+
+    //inviteUsers
+    inviteUsers: "Invite users",
+    inviteUsersDescription: "Invite users to DMS",
+    inviteUsersGoTo: "Invite users",
+    inviteUsersInfo: "To invite users to the DMS, enter emails (separated by commas) and text to be displayed in the email.",
+    sendEmails: "Send emails",
+    emails: "Emails",
+    emailsEmpty: "At least one email must be entered to send an invitation",
+    emailText: "Email text",
+    emailInvalid: " is not valid",
+    emailsInvalid: " are not valid",
+    emailValid: "Emails are being prepared for sending",
     
     //domain
     domain: "Domain ",

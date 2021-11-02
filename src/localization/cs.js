@@ -48,6 +48,19 @@ const cs = [{
     userEdit: "Úprava uživatele",
     usersDescription: "Spravovat uživatele",
     usersGoTo: "K uživatelům",
+
+    //inviteUsers
+    inviteUsers: "Pozvání uživatelů",
+    inviteUsersDescription: "Pozvat uživatele do DMS",
+    inviteUsersGoTo: "Pozvat uživatele",
+    inviteUsersInfo: "Pro pozvání uživatelů do DMS zadejte emaily (oddělené čárkou) a text, který se má v emailu zobrazit.",
+    sendEmails: "Odeslat emaily",
+    emails: "Emaily",
+    emailsEmpty: "Pro odeslání pozvánky musí být zadán alespoň jeden email",
+    emailText: "Text emailu",
+    emailInvalid: " není validní",
+    emailsInvalid: " nejsou validní",
+    emailValid: "Emaily se připravují pro odeslání",
     
     //domain
     domain: "Doména ",
