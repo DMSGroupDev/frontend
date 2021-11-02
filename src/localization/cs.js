@@ -53,7 +53,7 @@ const cs = [{
     inviteUsers: "Pozvání uživatelů",
     inviteUsersDescription: "Pozvat uživatele do DMS",
     inviteUsersGoTo: "Pozvat uživatele",
-    inviteUsersInfo: "Pro pozvání uživatelů do DMS zadejte emaily (oddělené čárkou) a text, který se má v emailu zobrazit.",
+    inviteUsersInfo: "Pro pozvání uživatelů do DMS zadejte emaily (oddělené čárkou) a text, který se má v emailu zobrazit. Emaily je také možné importovat ze souboru csv nebo xlsx.",
     sendEmails: "Odeslat emaily",
     emails: "Emaily",
     emailsEmpty: "Pro odeslání pozvánky musí být zadán alespoň jeden email",
@@ -61,6 +61,9 @@ const cs = [{
     emailInvalid: " není validní",
     emailsInvalid: " nejsou validní",
     emailValid: "Emaily se připravují pro odeslání",
+    invalidFile: "Při načtení dat ze souboru se vyskytla chyba",
+    invalidFileFormat: "Formát souboru není podporovaný",
+    upladFile: "Nahrát soubor",
     
     //domain
     domain: "Doména ",
