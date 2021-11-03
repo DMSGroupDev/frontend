@@ -25,6 +25,12 @@ const Dashboard = () => {
                 <CardContent> {strings.dashboardContent}</CardContent>
                 <Card className={classes.parentCard}>
                     <BasicCard
+                        name={strings.inviteUsers}
+                        description={strings.inviteUsersDescription}
+                        link={strings.inviteUsersGoTo}
+                        url="/invite-users">
+                    </BasicCard>
+                    <BasicCard
                         name={strings.users}
                         description={strings.usersDescription}
                         link={strings.usersGoTo}
