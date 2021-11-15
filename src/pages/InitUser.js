@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RegistrationForm from '../components/form/Registration.js';
+import ForgottenPassword from '../components/form/ForgottenPassword.js';
 import Login from '../components/form/Login.js';
 import Message from '../components/common/Message.js';
 import '../css/App.css';
@@ -19,9 +20,10 @@ export default class InitUser extends Component {
             message: null,
             showHideRegistrationForm: false,
             showHideLogin: true,
+            showHideForgottenPassword: false,
             language: '',
         };
-        this.propagateMessage = (message, showHideRegistrationForm, showHideLogin) => this.setState({ message, showHideRegistrationForm, showHideLogin });
+        this.propagateMessage = (message, showHideRegistrationForm, showHideLogin, showHideForgottenPassword) => this.setState({ message, showHideRegistrationForm, showHideLogin, showHideForgottenPassword });
         this.propagateLanguage = (language) => this.setState({ language });
     }
     getUser() {
@@ -45,6 +47,9 @@ export default class InitUser extends Component {
             case "showHideLogin":
                 this.setState({ showHideLogin: !this.state.showHideLogin });
                 break;
+            case "showHideForgottenPassword":
+                this.setState({ showHideForgottenPassword: !this.state.showHideForgottenPassword });
+                break;
             default:
                 break;
         }
@@ -58,6 +63,8 @@ export default class InitUser extends Component {
 
     render() {
         const { showHideRegistrationForm } = this.state;
+        const { showHideLogin } = this.state;
+        const { showHideForgottenPassword } = this.state;
         //const userData = this.getUser();
         //const userToken = userData[0];
         //const userName = userData[1];
@@ -68,12 +75,13 @@ export default class InitUser extends Component {
                 <div className="text-secondary message"><Message value={this.state.message} /></div>
                 <div>
                     <div><SwitchLanguage value={language} onLanguageChange={this.propagateLanguage} /></div>
-                    {!showHideRegistrationForm && (
+                    {!showHideRegistrationForm && showHideLogin && !showHideForgottenPassword && (
                         <div>
                             <Login onResultChange={this.propagateMessage} />
 
                         </div>)}
-                    {showHideRegistrationForm && (<RegistrationForm onResultChange={this.propagateMessage} />)}
+                    {showHideRegistrationForm && !showHideLogin && !showHideForgottenPassword && (<RegistrationForm onResultChange={this.propagateMessage} />)}
+                    {!showHideRegistrationForm && !showHideLogin && showHideForgottenPassword && (<ForgottenPassword onResultChange={this.propagateMessage} />)}
                 </div>
             </div>
         )

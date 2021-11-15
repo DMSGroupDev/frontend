@@ -75,7 +75,6 @@ export default class InviteUsers extends Component {
                 };
                 reader.readAsBinaryString(file);
             } else {
-                console.log(file.type)
                 this.setAlert('error', strings.invalidFileFormat)
             }
         } catch (err) {

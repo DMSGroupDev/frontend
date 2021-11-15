@@ -14,6 +14,7 @@ import czechMessages from './localization/czechMessages';
 import './css/MuiCustom.css';
 import strings from './localization/Localization.js';
 import customRoutes from './helpers/customRoutes';
+//import dataProvider from './helpers/dataProvider.js'
 
 const messages = {
     cs: czechMessages,

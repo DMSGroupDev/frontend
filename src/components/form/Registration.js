@@ -4,6 +4,7 @@ import { render } from '@testing-library/react';
 import strings from '../../localization/Localization.js';
 import Button from '@mui/material/Button';
 import MyTheme from '../common/MyTheme.js';
+import dataProvider from '../../helpers/dataProvider.js';
 
 export default class Registration extends Component {
     constructor(props) {
@@ -39,17 +40,42 @@ export default class Registration extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    validate() {
+    async validate() {
         let info = "";
         if (this.state.isValidName && this.state.isValidSurname && this.state.isValidEmail && this.state.isValidPassword && this.state.isValidCaptcha) {
 
-            // TODO check unique email and newUserName
             let newUserName = this.state.surname.substring(0, 5).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") + this.state.name.substring(0, 3).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            var response = await dataProvider.checkUser(newUserName, this.state.email)
+
+            if (response[0] === 200){
+                newUserName = response[2]
+                response = await dataProvider.postData('authenticate/Register', { 
+                    registrationCallbackUrl: "", 
+                    userName: newUserName,
+                    firstName: this.state.name,
+                    lastName: this.state.surname,
+                    email: this.state.email,
+                    password: this.state.password,
+                    confirmPassword: this.state.password})
+
+                if (response[0] === 200) {
+                    this.setState({ show: false });
+                    return ([strings.registrationSuccessEmail, false]);
+                } else {
+                    this.setState({ show: true });
+                    return ([response[1], true]);
+                }
+            } else {
+                this.setState({ show: true });
+                return ([response[1], true]);
+            }
+            
+            /*
             info = this.state.name + ' ' + this.state.surname + strings.registrationSuccess + newUserName;
             this.setState({ show: false, isValidForm: true });
 
             // TODO SEND DATA TO DB
-            return ([info, false]);
+            return ([info, false]);*/
         } else {
             if (!this.state.isValidName) {
                 info = strings.invalidName;
@@ -83,9 +109,9 @@ export default class Registration extends Component {
         this.setState({ email: "", password: "", name: "", surname: "", captcha: "" });
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
-        const result = this.validate();
+        const result = await this.validate();
         this.setState({ result: result[0] });
         this.props.onResultChange(result[0], result[1], !result[1], '');
         if (this.state.isValidForm)
@@ -94,8 +120,12 @@ export default class Registration extends Component {
     }
 
     toLogin() {
-        this.props.onResultChange('', !this.state.show, this.state.show, '');
+        this.props.onResultChange('', !this.state.show, this.state.show, !this.state.show, '');
         render();
+    }
+
+    toForgottenPass() {
+        this.props.onResultChange('', !this.state.show, !this.state.show, this.state.show, '');
     }
 
     render() {
@@ -133,6 +163,7 @@ export default class Registration extends Component {
                     type="captcha"
                     required={true} />
                 <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300" theme={MyTheme}> {strings.register} </Button>
+                <div className="divLink" onClick={() => this.toForgottenPass()} variant="contained"> {strings.forgottenPassword} </div>
                 <div className="divLink" onClick={() => this.toLogin()} variant="contained"> {strings.backToLogin} </div>
             </form>
         );

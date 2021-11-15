@@ -4,8 +4,9 @@ import { render } from '@testing-library/react';
 import strings from '../../localization/Localization.js';
 import Button from '@mui/material/Button';
 import MyTheme from '../common/MyTheme.js';
+//import dataProvider from '../../helpers/dataProvider.js';
 
-export default class Login extends Component {
+export default class ForgottenPassword extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -43,13 +44,8 @@ export default class Login extends Component {
         let info = "";
         if (this.state.isValidName && this.state.isValidPassword) {
             // TODO check username and password
-            info = strings.loginSuccess;
+            info = strings.confirmResetPassword;
             this.setState({ show: false, isValidForm: true });
-
-            // TODO GET TOKEN
-            const userName = this.state.userName
-            const roles = ['ROLE_ADMIN', 'ROLE_USER']
-            this.setUser('testToken123', userName, roles);
 
             return ([info, false, false, false]);
         } else {
@@ -72,7 +68,7 @@ export default class Login extends Component {
     handleReset() {
         this.setState({ password: "", userName: "" });
     }
-    
+
     handleSubmit(event) {
         event.preventDefault();
         const result = this.validate();
@@ -83,18 +79,19 @@ export default class Login extends Component {
         render()
     }
 
+    toLogin() {
+        this.props.onResultChange('', !this.state.show, this.state.show, !this.state.show, '');
+        render();
+    }
+
     toRegistration() {
         this.props.onResultChange('', this.state.show, !this.state.show, !this.state.show, '');
     }
 
-    toForgottenPass() {
-        this.props.onResultChange('', !this.state.show, !this.state.show, this.state.show, '');
-    }
-
     render() {
         return (
-            <form className="" id="loginForm">
-                <div className="h3">{strings.titleLogin}</div>
+            <form className="" id="forgPassForm">
+                <div className="h3">{strings.forgottenPassword}</div>
                 <Input name="userName"
                     value={this.state.userName}
                     onChange={this.handleChangeName}
@@ -104,11 +101,11 @@ export default class Login extends Component {
                 <Input name="password"
                     value={this.state.password}
                     onChange={this.handleChangePassword}
-                    label={strings.password}
+                    label={strings.newPassword}
                     type="password"
                     required={true} />
-                <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300" theme={MyTheme}> {strings.login} </Button>
-                <div className="divLink" onClick={() => this.toForgottenPass()} variant="contained"> {strings.forgottenPassword} </div>
+                <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300" theme={MyTheme}> {strings.resetPassword} </Button>
+                <div className="divLink" onClick={() => this.toLogin()} variant="contained"> {strings.backToLogin} </div>
                 <div className="divLink" onClick={() => this.toRegistration()} variant="contained"> {strings.newRegistration} </div>
             </form>
         );
