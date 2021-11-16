@@ -103,9 +103,13 @@ const cs = [{
     profilSave: "Uložit změny",
 
     //dataProvider
-    notValid: " není validní hodnota",
-    duplicate: " již existuje",
-    otherErr: " - při validaci se vyskytla chyba"
+    error1_notValid: " není validní hodnota",
+    error2_duplicate: " již existuje",
+    error3_minLenght: " je příliš krátký",
+    error4_notEqual: " přihlašovací údaje nesouhlasí",
+    error5_notFound: " nenalezen",
+    error6_lockedOut: " je zablokovaný",
+    error_otherErr: " neočekávaná chyba, zkuste to prosím později"
 }];
 
 export default cs;
