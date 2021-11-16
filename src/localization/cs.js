@@ -23,6 +23,7 @@ const cs = [{
     registrationSuccess: " je nově registrovaný uživatel s uživatelským jménem ",
     backToLogin: "Máte již přihlašovací údaje? Přihlašte se",
     toLogin: "Přihlásit se",
+    registrationSuccessEmail: "Registraci dokončíte potvrzením odkazu zaslaným emailem.",
 
     //login
     titleLogin: "Přihlášení",
@@ -31,6 +32,12 @@ const cs = [{
     loginError: "Přihlašovací údaje nesouhlasí",
     newRegistration: "Ještě nemáte účet? Registrujte se",
     logout: "Odhlásit",
+
+    //forgottenPassword
+    forgottenPassword: "Zapomenuté heslo",
+    newPassword: "Nové heslo",
+    resetPassword: "Uložit nové heslo",
+    confirmResetPassword: "Změnu hesla dokončíte potvrzením odkazu zaslaným emailem.",
 
     //dashboard
     dashboard: "Dashboard",
@@ -94,6 +101,11 @@ const cs = [{
     //myProfile
     myProfile: "Můj profil",
     profilSave: "Uložit změny",
+
+    //dataProvider
+    notValid: " není validní hodnota",
+    duplicate: " již existuje",
+    otherErr: " - při validaci se vyskytla chyba"
 }];
 
 export default cs;

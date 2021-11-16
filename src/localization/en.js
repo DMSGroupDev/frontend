@@ -23,6 +23,7 @@ const en = [{
     registrationSuccess: " is new registered user with username ",
     backToLogin: "Do you already have an account? Sign in",
     toLogin: "To login",
+    registrationSuccessEmail: "To complete the registration, please confirm the link via email.",
 
     //login
     titleLogin: "Sign in",
@@ -31,6 +32,12 @@ const en = [{
     loginError: "Username or password do not match",
     newRegistration: "Don't have an account? Sign Up",
     logout: "Logout",
+
+    //forgottenPassword
+    forgottenPassword: "Forgotten password",
+    newPassword: "New password",
+    resetPassword: "Save new password",
+    confirmResetPassword: "To complete the password change, please confirm the link via email.",
 
     //dashboard
     dashboard: "Dashboard",
@@ -94,6 +101,11 @@ const en = [{
     //myProfile
     myProfile: "My profile",
     profilSave: "Save Changes",
+
+    //dataProvider
+    notValid: " is not a valid value",
+    duplicate: " already exists",
+    otherErr: " - an error occurred during validation"
 }];
 
 export default en;
