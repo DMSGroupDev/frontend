@@ -49,7 +49,7 @@ export default class Registration extends Component {
 
             if (response[0] === 200){
                 newUserName = response[2]
-                response = await dataProvider.postData('authenticate/Register', { 
+                response = await dataProvider.postDataUnauth('authenticate/Register', {
                     registrationCallbackUrl: "", 
                     userName: newUserName,
                     firstName: this.state.name,
@@ -69,13 +69,6 @@ export default class Registration extends Component {
                 this.setState({ show: true });
                 return ([response[1], true]);
             }
-            
-            /*
-            info = this.state.name + ' ' + this.state.surname + strings.registrationSuccess + newUserName;
-            this.setState({ show: false, isValidForm: true });
-
-            // TODO SEND DATA TO DB
-            return ([info, false]);*/
         } else {
             if (!this.state.isValidName) {
                 info = strings.invalidName;

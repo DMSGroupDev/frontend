@@ -7,7 +7,7 @@ const dataProvider = {
             var isDuplicate = true;
             var idInt = 1;
             while (isDuplicate !== false){
-                var response = await this.postData('authenticate/UserValidation', { userName, email })
+                var response = await this.postDataUnauth('authenticate/UserValidation', { userName, email })
                 if (response[1].toString().includes("UserName")) {
                     isDuplicate = true
                     userName = userName.slice(0, -1) + idInt.toString();
@@ -22,18 +22,22 @@ const dataProvider = {
         }
     },
 
-    async postData (url, params) {
+    async postDataUnauth (url, params) {
     try {
         var responseMessage = "";
         var responseStatus = 0;
+        var responseToken = "";
+        var responseUser = "";
         var response = await axios.post('https://dmsgroup2.azurewebsites.net/api/' + url, params)
         if ((response.data.statusCode < 200 || response.data.statusCode >= 300) && response.data.statusCode !== 400) {
             throw new Error(response.statusText);
         } else {
             responseStatus = response.data.statusCode;
             responseMessage = "";
+            responseToken = response.data.token;
+            responseUser = response.data.applicationUser.userName;
         }
-        return [responseStatus, responseMessage]
+        return [responseStatus, responseMessage, responseToken, responseUser]
     } catch (err) {
         responseStatus = err.response.data.statusCode;
         err.response.data.errorResponse.errors.forEach(function (error) {
@@ -54,7 +58,42 @@ const dataProvider = {
             }
         })
     }
-    return [responseStatus, responseMessage]
+        return [responseStatus, responseMessage, responseToken, responseUser]
+    },
+
+    async postData(url, params) {
+        try {
+            var responseMessage = "";
+            var responseStatus = 0;
+            var response = await axios.post('https://dmsgroup2.azurewebsites.net/api/' + url, params)
+            if ((response.data.statusCode < 200 || response.data.statusCode >= 300) && response.data.statusCode !== 400) {
+                throw new Error(response.statusText);
+            } else {
+                responseStatus = response.data.statusCode;
+                responseMessage = "";
+            }
+            return [responseStatus, responseMessage]
+        } catch (err) {
+            responseStatus = err.response.data.statusCode;
+            err.response.data.errorResponse.errors.forEach(function (error) {
+                if (responseMessage === "") {
+                    responseMessage = error.propertyName + " " + error.attemptedValue;
+                } else {
+                    responseMessage += ", " + error.propertyName + " " + error.attemptedValue;
+                }
+                switch (error.errorCode) {
+                    case '1':
+                        responseMessage += strings.notValid;
+                        break;
+                    case '2':
+                        responseMessage += strings.duplicate;
+                        break;
+                    default:
+                        responseMessage += strings.otherErr;
+                }
+            })
+        }
+        return [responseStatus, responseMessage]
     }
 }
 

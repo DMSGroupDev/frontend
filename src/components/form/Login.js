@@ -4,24 +4,25 @@ import { render } from '@testing-library/react';
 import strings from '../../localization/Localization.js';
 import Button from '@mui/material/Button';
 import MyTheme from '../common/MyTheme.js';
+import dataProvider from '../../helpers/dataProvider.js';
 
 export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName: "",
+            email: "",
             password: "",
             isValidForm: false,
-            isValidName: false,
+            isValidEmail: false,
             isValidPassword: false,
-            validInfo: strings.invalidName + " " + strings.invalidPassword,
+            validInfo: strings.invalidEmail + " " + strings.invalidPassword,
             result: null,
             show: true
         };
         const handleChangePassword = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidPassword: isValid });
-        const handleChangeName = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidName: isValid });
+        const handleChangeEmail = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidEmail: isValid });
         this.handleChangePassword = handleChangePassword.bind(this, 'password');
-        this.handleChangeName = handleChangeName.bind(this, 'userName');
+        this.handleChangeEmail = handleChangeEmail.bind(this, 'email');
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -39,22 +40,26 @@ export default class Login extends Component {
 
     }
 
-    validate() {
+    async validate() {
         let info = "";
-        if (this.state.isValidName && this.state.isValidPassword) {
-            // TODO check username and password
-            info = strings.loginSuccess;
-            this.setState({ show: false, isValidForm: true });
-
-            // TODO GET TOKEN
-            const userName = this.state.userName
-            const roles = ['ROLE_ADMIN', 'ROLE_USER']
-            this.setUser('testToken123', userName, roles);
-
-            return ([info, false, false, false]);
+        if (this.state.isValidEmail && this.state.isValidPassword) {
+            var response = await dataProvider.postDataUnauth('authenticate/Login', {
+                email: this.state.email,
+                password: this.state.password
+            })
+            if (response[0] === 200) {
+                //TODO Roles
+                const roles = ['ROLE_ADMIN', 'ROLE_USER']
+                await this.setUser(response[2], response[3], roles);
+                this.setState({ show: false, isValidForm: true });
+                return ([strings.loginSuccess, false, false, false]);
+            } else {
+                this.setState({ show: true });
+                return ([response[1], false, true, false]);
+            }
         } else {
-            if (!this.state.isValidName) {
-                info = strings.invalidName;
+            if (!this.state.isValidEmail) {
+                info = strings.invalidEmail;
             }
             if (!this.state.isValidPassword) {
                 if (info !== "")
@@ -73,9 +78,9 @@ export default class Login extends Component {
         this.setState({ password: "", userName: "" });
     }
     
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
-        const result = this.validate();
+        const result = await this.validate();
         this.setState({ result: result[0] });
         this.props.onResultChange(result[0], result[1], result[2]);
         if (this.state.isValidForm)
@@ -95,11 +100,11 @@ export default class Login extends Component {
         return (
             <form className="" id="loginForm">
                 <div className="h3">{strings.titleLogin}</div>
-                <Input name="userName"
-                    value={this.state.userName}
-                    onChange={this.handleChangeName}
-                    label={strings.userName}
-                    type="text"
+                <Input name="email"
+                    value={this.state.email}
+                    onChange={this.handleChangeEmail}
+                    label={strings.email}
+                    type="email"
                     required={true} />
                 <Input name="password"
                     value={this.state.password}
