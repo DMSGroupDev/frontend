@@ -1,5 +1,6 @@
 import axios from 'axios';
 import strings from '../localization/Localization.js';
+import config from '../config.json';
 
 const dataProvider = {
     log(logType, message){
@@ -7,7 +8,7 @@ const dataProvider = {
             'Authorization':
                 'Bearer ' + localStorage.getItem('userToken')
         };
-        axios.post('https://dmsgroup2.azurewebsites.net/api/util/Log'
+        axios.post(config.API_URL + 'util/Log'
             , {
                 logTypeText: logType,
                 logType: 13,
@@ -23,7 +24,7 @@ const dataProvider = {
             const headers = { 'Authorization': 
                 'Bearer ' + localStorage.getItem('userToken')
             };
-            var response = await axios.post('https://dmsgroup2.azurewebsites.net/api/' + url, params, {headers: headers})
+            var response = await axios.post(config.API_URL + url, params, {headers: headers})
             if ((response.data.statusCode < 200 || response.data.statusCode >= 300) && response.data.statusCode !== 400) {
                 throw new Error(response.statusText);
             } else {
@@ -33,40 +34,47 @@ const dataProvider = {
             return [responseStatus, responseMessage]
         } catch (err) {
             responseStatus = err.response.data.statusCode;
-            err.response.data.errorResponse.errors.forEach(function (error) {
-                if (responseMessage === "") {
-                    var val = error.attemptedValue;
-                    if (error.propertyName === "password") {
-                        val = strings.password
+            try {
+                err.response.data.errorResponse.errors.forEach(function (error) {
+                    if (responseMessage === "") {
+                        var val = error.attemptedValue;
+                        if (error.propertyName === "password") {
+                            val = strings.password
+                        }
+                        responseMessage = val;
+                    } else {
+                        responseMessage += ", " + val;
                     }
-                    responseMessage = val;
-                } else {
-                    responseMessage += ", " + val;
-                }
-                switch (error.errorCode) {
-                    case '1':
-                        responseMessage += strings.error1_notValid;
-                        break;
-                    case '2':
-                        responseMessage += strings.error2_duplicate;
-                        break;
-                    case '3':
-                        responseMessage += strings.error3_minLenght;
-                        break;
-                    case '4':
-                        responseMessage += strings.error4_notEqual;
-                        break;
-                    case '5':
-                        responseMessage += strings.error5_notFound;
-                        break;
-                    case '6':
-                        responseMessage += strings.error6_lockedOut;
-                        break;
-                    default:
-                        this.log('warning', localStorage.getItem('userName') + error.errorCode + error.errorMessage)
-                        responseMessage = strings.error_otherErr;
-                }
-            })
+                    switch (error.errorCode) {
+                        case '1':
+                            responseMessage += strings.error1_notValid;
+                            break;
+                        case '2':
+                            responseMessage += strings.error2_duplicate;
+                            break;
+                        case '3':
+                            responseMessage += strings.error3_minLenght;
+                            break;
+                        case '4':
+                            responseMessage += strings.error4_notEqual;
+                            break;
+                        case '5':
+                            responseMessage += strings.error5_notFound;
+                            break;
+                        case '6':
+                            responseMessage += strings.error6_lockedOut;
+                            break;
+                        default:
+                            this.log('warning', localStorage.getItem('userName') + error.errorCode + error.errorMessage)
+                            responseMessage = strings.error_otherErr;
+                    }
+                })
+            }
+            catch(error){
+                this.log('warning', localStorage.getItem('userName') + error)
+                responseMessage = strings.error_otherErr;
+            }
+            
         }
         return [responseStatus, responseMessage]
     },
@@ -97,7 +105,7 @@ const dataProvider = {
             var responseStatus = 0;
             var responseToken = "";
             var responseUser = "";
-            var response = await axios.post('https://dmsgroup2.azurewebsites.net/api/' + url, params)
+            var response = await axios.post(config.API_URL + url, params)
             if ((response.data.statusCode < 200 || response.data.statusCode >= 300) && response.data.statusCode !== 400) {
                 throw new Error(response.statusText);
             } else {

@@ -24,6 +24,8 @@ const cs = [{
     backToLogin: "Máte již přihlašovací údaje? Přihlašte se",
     toLogin: "Přihlásit se",
     registrationSuccessEmail: "Registraci dokončíte potvrzením odkazu zaslaným emailem.",
+    confirmRegistration: "Registrace je potvrzená. Nyní se můžete přihlásit.",
+    unsuccessfulRegistration: "Během potvrzení registrace se vyskytla chyba. Zkuste to prosím později.",
 
     //login
     titleLogin: "Přihlášení",

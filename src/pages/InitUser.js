@@ -12,12 +12,13 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 //import strings from '../localization/Localization.js';
 import SwitchLanguage from '../components/common/SwitchLanguage.js';
 import MyTheme from '../components/common/MyTheme.js';
+import dataProvider from '../helpers/dataProvider.js';
 
 export default class InitUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: null,
+            message: sessionStorage.getItem('confirmMessage'),
             showHideRegistrationForm: false,
             showHideLogin: true,
             showHideForgottenPassword: false,
@@ -36,6 +37,7 @@ export default class InitUser extends Component {
         const language = localStorage.getItem('language');
         localStorage.clear();
         localStorage.setItem('language', language);
+        dataProvider.postData('Logout')
         window.location.reload();
     }
 
@@ -78,7 +80,6 @@ export default class InitUser extends Component {
                     {!showHideRegistrationForm && showHideLogin && !showHideForgottenPassword && (
                         <div>
                             <Login onResultChange={this.propagateMessage} />
-
                         </div>)}
                     {showHideRegistrationForm && !showHideLogin && !showHideForgottenPassword && (<RegistrationForm onResultChange={this.propagateMessage} />)}
                     {!showHideRegistrationForm && !showHideLogin && showHideForgottenPassword && (<ForgottenPassword onResultChange={this.propagateMessage} />)}

@@ -1,8 +1,11 @@
+import dataProvider from './dataProvider.js';
+
 const authProvider = {
     login: ({ username, password }) => {
     },
-    logout: () => {
+    logout: async () => {
         const language = localStorage.getItem('language');
+        await dataProvider.postData('authenticate/Logout')
         localStorage.clear();
         localStorage.setItem('language', language);
         return Promise.resolve();

@@ -26,7 +26,7 @@ export default class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    setUser(userToken, userName, roles) {
+    async setUser(userToken, userName, roles) {
         localStorage.setItem('userName', userName);
         localStorage.setItem('userToken', userToken);
         localStorage.setItem('auth', userToken);

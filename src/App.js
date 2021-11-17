@@ -14,6 +14,8 @@ import czechMessages from './localization/czechMessages';
 import './css/MuiCustom.css';
 import strings from './localization/Localization.js';
 import customRoutes from './helpers/customRoutes';
+import { Route } from 'react-router-dom';
+import Confirm from './pages/Confirm'
 //import dataProvider from './helpers/dataProvider.js'
 
 const messages = {
@@ -35,6 +37,7 @@ const App = () => (
             customRoutes={customRoutes}
         >
         <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} options={{ label: strings.users }} />
+        <Route exact path='/Confirm/:confirm' component={Confirm} />
         </Admin>
 )
 

@@ -24,6 +24,8 @@ const en = [{
     backToLogin: "Do you already have an account? Sign in",
     toLogin: "To login",
     registrationSuccessEmail: "To complete the registration, please confirm the link via email.",
+    confirmRegistration: "Registration is confirmed. You can log in now.",
+    unsuccessfulRegistration: "An error occurred while confirming the registration. Please try again later.",
 
     //login
     titleLogin: "Sign in",
