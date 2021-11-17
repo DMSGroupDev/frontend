@@ -26,11 +26,14 @@ export default class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    setUser(userToken, userName, roles) {
+    async setUser(userToken, userName, roles) {
         localStorage.setItem('userName', userName);
         localStorage.setItem('userToken', userToken);
         localStorage.setItem('auth', userToken);
         localStorage.setItem('permissions', JSON.stringify(roles));
+
+        dataProvider.log('information', userName + ' was logged in');
+
         // TODO pokud má již vytvořenou doménu, uloží ji do localStorage
         if (localStorage.getItem('domainName') !== "undefined" && localStorage.getItem('domainName') != null) {
             window.location.href = "/";

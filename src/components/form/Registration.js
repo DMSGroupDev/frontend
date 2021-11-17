@@ -5,6 +5,7 @@ import strings from '../../localization/Localization.js';
 import Button from '@mui/material/Button';
 import MyTheme from '../common/MyTheme.js';
 import dataProvider from '../../helpers/dataProvider.js';
+import config from '../../config.json';
 
 export default class Registration extends Component {
     constructor(props) {
@@ -50,7 +51,7 @@ export default class Registration extends Component {
             if (response[0] === 200){
                 newUserName = response[2]
                 response = await dataProvider.postDataUnauth('authenticate/Register', {
-                    registrationCallbackUrl: "", 
+                    registrationCallbackUrl: config.WEB_URL + '/#/confirm/:confirm=registration_{0}',
                     userName: newUserName,
                     firstName: this.state.name,
                     lastName: this.state.surname,

@@ -24,6 +24,8 @@ const en = [{
     backToLogin: "Do you already have an account? Sign in",
     toLogin: "To login",
     registrationSuccessEmail: "To complete the registration, please confirm the link via email.",
+    confirmRegistration: "Registration is confirmed. You can log in now.",
+    unsuccessfulRegistration: "An error occurred while confirming the registration. Please try again later.",
 
     //login
     titleLogin: "Sign in",
@@ -103,9 +105,13 @@ const en = [{
     profilSave: "Save Changes",
 
     //dataProvider
-    notValid: " is not a valid value",
-    duplicate: " already exists",
-    otherErr: " - an error occurred during validation"
+    error1_notValid: " is not a valid value",
+    error2_duplicate: " already exists",
+    error3_minLenght: " is too short",
+    error4_notEqual: " login details do not match",
+    error5_notFound: " not found",
+    error6_lockedOut: " is blocked",
+    error_otherErr: " An unexpected error occurred, please try again later"
 }];
 
 export default en;

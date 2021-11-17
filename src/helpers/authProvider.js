@@ -1,25 +1,11 @@
+import dataProvider from './dataProvider.js';
+
 const authProvider = {
     login: ({ username, password }) => {
-        /*const request = new Request('https://mydomain.com/authenticate', {
-            method: 'POST',
-            body: JSON.stringify({ username, password }),
-            headers: new Headers({ 'Content-Type': 'application/json' }),
-        });
-        return fetch(request)
-            .then(response => {
-                if (response.status < 200 || response.status >= 300) {
-                    throw new Error(response.statusText);
-                }
-                return response.json();
-            })
-            .then(({ token }) => {
-                const decodedToken = decodeJwt(token);
-                localStorage.setItem('token', token);
-                localStorage.setItem('permissions', decodedToken.permissions);
-            });*/
     },
-    logout: () => {
+    logout: async () => {
         const language = localStorage.getItem('language');
+        await dataProvider.postData('authenticate/Logout')
         localStorage.clear();
         localStorage.setItem('language', language);
         return Promise.resolve();
@@ -34,7 +20,7 @@ const authProvider = {
             return Promise.reject(error);
         }
     },
-    checkAuth: () => (localStorage.getItem('auth') ? Promise.resolve() : Promise.reject({ message: 'login.required' })),
+    checkAuth: () => (localStorage.getItem('auth') ? Promise.resolve() : Promise.reject({ message: ""})),
 
     getPermissions: (params) => {
         const role = localStorage.getItem('permissions');
