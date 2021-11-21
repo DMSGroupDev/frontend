@@ -51,7 +51,7 @@ export default class Registration extends Component {
             if (response[0] === 200){
                 newUserName = response[2]
                 response = await dataProvider.postDataUnauth('authenticate/Register', {
-                    registrationCallbackUrl: config.WEB_URL + '/#/confirm/:confirm=registration_{0}',
+                    registrationCallbackUrl: config.WEB_URL + '/#/confirm/:confirm=registration_{0}_{1}',
                     userName: newUserName,
                     firstName: this.state.name,
                     lastName: this.state.surname,

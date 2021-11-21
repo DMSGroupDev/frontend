@@ -26,6 +26,7 @@ const cs = [{
     registrationSuccessEmail: "Registraci dokončíte potvrzením odkazu zaslaným emailem.",
     confirmRegistration: "Registrace je potvrzená. Nyní se můžete přihlásit.",
     unsuccessfulRegistration: "Během potvrzení registrace se vyskytla chyba. Zkuste to prosím později.",
+    registrationVerified: "Probíhá ověřování registrace...",
 
     //login
     titleLogin: "Přihlášení",
