@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
     "bootstrap": "^3.4.1",
+    "compression-webpack-plugin": "1.1.12",
     "email-validator": "^2.0.4",
     "localization": "^1.0.2",
     "material-ui-color-picker": "^3.5.1",
