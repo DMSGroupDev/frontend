@@ -26,7 +26,7 @@ const en = [{
     registrationSuccessEmail: "To complete the registration, please confirm the link via email.",
     confirmRegistration: "Registration is confirmed. You can log in now.",
     unsuccessfulRegistration: "An error occurred while confirming the registration. Please try again later.",
-    registrationVerified: "Registration is being verified...",
+    verified: "Verification in progress, please wait...",
 
 
     //login
@@ -42,6 +42,8 @@ const en = [{
     newPassword: "New password",
     resetPassword: "Save new password",
     confirmResetPassword: "To complete the password change, please confirm the link via email.",
+    confirmPassword: "The password is changed. You can log in now.",
+    unsuccessResetPassword: "An error occurred while resetting the password. Please try again later.",
 
     //dashboard
     dashboard: "Dashboard",

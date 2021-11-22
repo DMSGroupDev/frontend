@@ -4,74 +4,69 @@ import { render } from '@testing-library/react';
 import strings from '../../localization/Localization.js';
 import Button from '@mui/material/Button';
 import MyTheme from '../common/MyTheme.js';
-//import dataProvider from '../../helpers/dataProvider.js';
+import dataProvider from '../../helpers/dataProvider.js';
+import config from '../../config.json';
 
 export default class ForgottenPassword extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName: "",
+            email: "",
             password: "",
             isValidForm: false,
-            isValidName: false,
+            isValidEmail: false,
             isValidPassword: false,
             validInfo: strings.invalidName + " " + strings.invalidPassword,
             result: null,
             show: true
         };
         const handleChangePassword = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidPassword: isValid });
-        const handleChangeName = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidName: isValid });
+        const handleChangeEmail = (name, value, validInfo, isValid) => this.setState({ [name]: value, validInfo: validInfo, isValidEmail: isValid });
         this.handleChangePassword = handleChangePassword.bind(this, 'password');
-        this.handleChangeName = handleChangeName.bind(this, 'userName');
+        this.handleChangeEmail = handleChangeEmail.bind(this, 'email');
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    setUser(userToken, userName, roles) {
-        localStorage.setItem('userName', userName);
-        localStorage.setItem('userToken', userToken);
-        localStorage.setItem('auth', userToken);
-        localStorage.setItem('permissions', JSON.stringify(roles));
-        // TODO pokud má již vytvořenou doménu, uloží ji do localStorage
-        if (localStorage.getItem('domainName') !== "undefined" && localStorage.getItem('domainName') != null) {
-            window.location.href = "/";
-        } else {
-            window.location.href = "/#/my-profile";
-        }
-
-    }
-
-    validate() {
+    async validate() {
         let info = "";
-        if (this.state.isValidName && this.state.isValidPassword) {
-            // TODO check username and password
-            info = strings.confirmResetPassword;
-            this.setState({ show: false, isValidForm: true });
+        if (this.state.isValidName && this.state.isValidSurname && this.state.isValidEmail && this.state.isValidPassword && this.state.isValidCaptcha) {
 
-            return ([info, false, false, false]);
+            let newUserName = this.state.surname.substring(0, 5).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") + this.state.name.substring(0, 3).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            var response = await dataProvider.checkUser(newUserName, this.state.email)
+
+            if (response[0] === 200) {
+                newUserName = response[2]
+                response = await dataProvider.postDataUnauth('identity/ForgetPassword', {
+                    registrationCallbackUrl: config.WEB_URL + '/#/confirm/:confirm=password_{0}_{1}',
+                    email: this.state.email
+                })
+            } else {
+                this.setState({ show: true });
+                return ([response[1], true]);
+            }
         } else {
-            if (!this.state.isValidName) {
-                info = strings.invalidName;
+            if (!this.state.isValidEmail) {
+                if (info !== "")
+                    info += ", ";
+                info += strings.invalidEmail
             }
             if (!this.state.isValidPassword) {
                 if (info !== "")
                     info += ", ";
                 info += strings.invalidPassword
             }
-            if (info !== "")
-                info += ", ";
-            info += strings.loginError
             this.setState({ show: true });
-            return ([info, false, true, false]);
+            return ([info, true]);
         }
     }
 
     handleReset() {
-        this.setState({ password: "", userName: "" });
+        this.setState({ password: "", email: "" });
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
-        const result = this.validate();
+        const result = await this.validate();
         this.setState({ result: result[0] });
         this.props.onResultChange(result[0], result[1], result[2]);
         if (this.state.isValidForm)
@@ -92,10 +87,10 @@ export default class ForgottenPassword extends Component {
         return (
             <form className="" id="forgPassForm">
                 <div className="h3">{strings.forgottenPassword}</div>
-                <Input name="userName"
-                    value={this.state.userName}
-                    onChange={this.handleChangeName}
-                    label={strings.userName}
+                <Input name="email"
+                    value={this.state.email}
+                    onChange={this.handleChangeEmail}
+                    label={strings.email}
                     type="text"
                     required={true} />
                 <Input name="password"

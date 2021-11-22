@@ -10,9 +10,9 @@ export default class Confirm extends Component {
         if (confirm !== undefined) {
             if (confirm.includes('registration')){
                 try{
-                    var response = await dataProvider.postDataUnauth('authenticate/confirmRegistration', {
-                        tmpKey: confirm.split('_')[1],
-                        user: confirm.split('_')[2]
+                    var response = await dataProvider.postDataUnauth('identity/ConfirmEmail', {
+                        userId: confirm.split('_')[1],
+                        code: confirm.split('_')[2]
                     })
                     if (response[0] === 200) {
                         sessionStorage.setItem('confirmMessage', strings.confirmRegistration);
@@ -31,16 +31,37 @@ export default class Confirm extends Component {
                     console.log(err);
                     window.location.href = "#/login";
                 }
-                
             }
             else if (confirm.includes('password')) {
+                try {
+                    var responsePass = await dataProvider.postDataUnauth('identity/ConfirmEmail', {
+                        userId: confirm.split('_')[1],
+                        code: confirm.split('_')[2]
+                    })
+                    if (responsePass[0] === 200) {
+                        sessionStorage.setItem('confirmMessage', strings.confirmPassword);
+                        setTimeout(() => sessionStorage.removeItem('confirmMessage'), 2000);
+                        window.location.href = "#/login";
+                    } else {
+                        sessionStorage.setItem('confirmMessage', strings.unsuccessResetPassword);
+                        setTimeout(() => sessionStorage.removeItem('confirmMessage'), 2000);
+                        console.log(responsePass[1]);
+                        window.location.href = "#/login";
+                    }
+                }
+                catch (err) {
+                    sessionStorage.setItem('confirmMessage', strings.unsuccessResetPassword);
+                    setTimeout(() => sessionStorage.removeItem('confirmMessage'), 2000);
+                    console.log(err);
+                    window.location.href = "#/login";
+                }
             }
         }
     }
     render() {
         return (
             <div className="initUser" theme={MyTheme}>
-                <div>{strings.registrationVerified}</div>
+                <div>{strings.verified}</div>
             </div>
         );
     }
