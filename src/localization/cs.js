@@ -26,7 +26,7 @@ const cs = [{
     registrationSuccessEmail: "Registraci dokončíte potvrzením odkazu zaslaným emailem.",
     confirmRegistration: "Registrace je potvrzená. Nyní se můžete přihlásit.",
     unsuccessfulRegistration: "Během potvrzení registrace se vyskytla chyba. Zkuste to prosím později.",
-    registrationVerified: "Probíhá ověřování registrace...",
+    verified: "Probíhá ověřování, prosím počkejte...",
 
     //login
     titleLogin: "Přihlášení",
@@ -41,6 +41,8 @@ const cs = [{
     newPassword: "Nové heslo",
     resetPassword: "Uložit nové heslo",
     confirmResetPassword: "Změnu hesla dokončíte potvrzením odkazu zaslaným emailem.",
+    confirmPassword: "Heslo je změněné. Nyní se můžete přihlásit.",
+    unsuccessResetPassword: "Během resetu hesla se vyskytla chyba. Zkuste to prosím později.",
 
     //dashboard
     dashboard: "Dashboard",

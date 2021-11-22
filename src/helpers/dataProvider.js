@@ -46,22 +46,22 @@ const dataProvider = {
                         responseMessage += ", " + val;
                     }
                     switch (error.errorCode) {
-                        case '1':
+                        case 1:
                             responseMessage += strings.error1_notValid;
                             break;
-                        case '2':
+                        case 2:
                             responseMessage += strings.error2_duplicate;
                             break;
-                        case '3':
+                        case 3:
                             responseMessage += strings.error3_minLenght;
                             break;
-                        case '4':
+                        case 4:
                             responseMessage += strings.error4_notEqual;
                             break;
-                        case '5':
+                        case 5:
                             responseMessage += strings.error5_notFound;
                             break;
-                        case '6':
+                        case 6:
                             responseMessage += strings.error6_lockedOut;
                             break;
                         default:
@@ -125,28 +125,36 @@ const dataProvider = {
                     var val = error.attemptedValue;
                     if (error.propertyName === "password") {
                         val = strings.password
+                    } else if (error.propertyName === "UserName") {
+                        val = error.propertyName
                     }
                     responseMessage = val;
                 } else {
-                    responseMessage += ", " + val;
+                    var value = error.attemptedValue;
+                    if (error.propertyName === "password") {
+                        value = strings.password
+                    } else if (error.propertyName === "UserName") {
+                        value = error.propertyName
+                    }
+                    responseMessage += ", " + value;
                 }
                 switch (error.errorCode) {
-                    case '1':
+                    case 1:
                         responseMessage += strings.error1_notValid;
                         break;
-                    case '2':
+                    case 2:
                         responseMessage += strings.error2_duplicate;
                         break;
-                    case '3':
+                    case 3:
                         responseMessage += strings.error3_minLenght;
                         break;
-                    case '4':
+                    case 4:
                         responseMessage += strings.error4_notEqual;
                         break;
-                    case '5':
+                    case 5:
                         responseMessage += strings.error5_notFound;
                         break;
-                    case '6':
+                    case 6:
                         responseMessage += strings.error6_lockedOut;
                         break;
                     default:
