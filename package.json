@@ -43,7 +43,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts  && compress-cra",
+    "build": "react-scripts build && compress-cra",
     "test": "mocha",
     "eject": "react-scripts eject"
   },
