@@ -94,6 +94,8 @@ const cs = [{
     domainInfo: "Jako první krok si prosím vytvořte název domény (například jméno firmy), která bude zastřešovat veškerou další práci s dokumenty a uživateli.",
     domainNotice: "Po validaci jména a uložení nebude možné název domény změnit",
     domainEmpty: "Název domény nesmí být prázdný",
+    domainDuplicate: "Doména s tímto názvem již existuje, zvolte prosím jiný název",
+    domainError: "Při vytváření domény se vyskytla chyba, zkuste to prosím později",
     
     //common
     search: "Vyhledat",

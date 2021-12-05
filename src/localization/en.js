@@ -95,6 +95,8 @@ const en = [{
     domainInfo: "As a first step, please create a domain name (for example a business name) that will cover all other work with documents and users.",
     domainNotice: "Once the name is validated and saved, it will not be possible to change the domain name",
     domainEmpty: "Domain name cannot be empty",
+    domainDuplicate: "A domain with this name already exists, please choose another name",
+    domainError: "An error occurred while creating the domain, please try again later",
     
     //common
     search: "Search",

@@ -12,6 +12,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import MyNotifyAlert from '../components/common/MyNotifyAlert.js';
+import dataProvider from '../helpers/dataProvider.js';
 
 const TableCellStyled = styled(TableCell)(({ theme }) => ({
     border: 'none',
@@ -43,13 +44,24 @@ export default class MyProfile extends Component {
         }
     }
     
-    addDomain(e) {
+    async addDomain(e) {
         e.preventDefault()
-        //TODO validate and save chandes to DB, check duplication
         var newDomain = this.state.domainName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(" ", "-").replace(".", "-").replace(",", "-");
-        if(newDomain !== ""){
-            localStorage.setItem('domainName', newDomain);
-            this.setState({ domainName: '' })
+        if (newDomain !== "") {
+            var response = await dataProvider.postData('identity/ValidationRegisterDomain', {domainName: newDomain})
+            if (response[0] === 200) {
+                response = await dataProvider.postData('identity/RegisterDomain', { domainName: newDomain, email: "seznam@seznam.cz" })
+                if (response[0] === 200) {
+                    localStorage.setItem('domainName', newDomain);
+                    this.setState({ domainName: '' })
+                } else {
+                    this.setState({ alertInfo: strings.domainError, alertType: 'warning', showAlert: true });
+                    setTimeout(() => this.setState({ showAlert: false }), 600);
+                }
+            } else {
+                this.setState({ alertInfo: strings.domainDuplicate, alertType: 'warning', showAlert: true });
+                setTimeout(() => this.setState({ showAlert: false }), 600);
+            }   
         } else {
             this.setState({ alertInfo: strings.domainEmpty, alertType: 'warning', showAlert: true });
             setTimeout(() => this.setState({ showAlert: false }), 600);
