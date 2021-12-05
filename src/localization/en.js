@@ -40,10 +40,13 @@ const en = [{
     //forgottenPassword
     forgottenPassword: "Forgotten password",
     newPassword: "New password",
+    newPasswordConfirm: "New password again",
     resetPassword: "Save new password",
-    confirmResetPassword: "To complete the password change, please confirm the link via email.",
-    confirmPassword: "The password is changed. You can log in now.",
     unsuccessResetPassword: "An error occurred while resetting the password. Please try again later.",
+    generateLinkPassword: "Send password reset email",
+    forgotPasswordEmail: "To complete the password change, please confirm the link via email.",
+    forgotPasswordConfirm: "The password is changed. You can log in now.",
+    invalidPasswordIdentical: "Passwords do not match",
 
     //dashboard
     dashboard: "Dashboard",
