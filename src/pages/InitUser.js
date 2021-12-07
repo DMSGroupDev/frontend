@@ -57,6 +57,12 @@ export default class InitUser extends Component {
         }
     }
 
+    componentDidMount() {
+        if (localStorage.getItem('forgotPassToken') !== "undefined" && localStorage.getItem('forgotPassToken') != null) {
+            this.setState({ showHideRegistrationForm: false, showHideLogin: false, showHideForgottenPassword:  true});
+        }
+    }
+
     componentDidUpdate() {
         if (this.state.message) {
             setTimeout(() => this.setState({ message: "" }), 6000);

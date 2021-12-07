@@ -40,10 +40,14 @@ const en = [{
     //forgottenPassword
     forgottenPassword: "Forgotten password",
     newPassword: "New password",
+    newPasswordConfirm: "New password again",
     resetPassword: "Save new password",
-    confirmResetPassword: "To complete the password change, please confirm the link via email.",
-    confirmPassword: "The password is changed. You can log in now.",
-    unsuccessResetPassword: "An error occurred while resetting the password. Please try again later.",
+    unsuccessResetPassword: "Password reset not possible, please try again later or reset your password again.",
+    generateLinkPassword: "Send password reset email",
+    forgotPasswordEmail: "To reset your password, click on the link in the email and set a new password.",
+    forgotPasswordConfirm: "The password is changed. You can log in now.",
+    invalidPasswordIdentical: "Passwords do not match",
+    confirmPassword: "Please set a new password",
 
     //dashboard
     dashboard: "Dashboard",
@@ -92,6 +96,8 @@ const en = [{
     domainInfo: "As a first step, please create a domain name (for example a business name) that will cover all other work with documents and users.",
     domainNotice: "Once the name is validated and saved, it will not be possible to change the domain name",
     domainEmpty: "Domain name cannot be empty",
+    domainDuplicate: "A domain with this name already exists, please choose another name",
+    domainError: "An error occurred while creating the domain, please try again later",
     
     //common
     search: "Search",

@@ -39,10 +39,14 @@ const cs = [{
     //forgottenPassword
     forgottenPassword: "Zapomenuté heslo",
     newPassword: "Nové heslo",
+    newPasswordConfirm: "Nové heslo znovu",
     resetPassword: "Uložit nové heslo",
-    confirmResetPassword: "Změnu hesla dokončíte potvrzením odkazu zaslaným emailem.",
-    confirmPassword: "Heslo je změněné. Nyní se můžete přihlásit.",
-    unsuccessResetPassword: "Během resetu hesla se vyskytla chyba. Zkuste to prosím později.",
+    unsuccessResetPassword: "Reset hesla není možný, zkuste to prosím později nebo si znovu resetujte heslo.",
+    generateLinkPassword: "Odeslat email pro reset hesla",
+    forgotPasswordEmail: "Pro reset hesla klikněte na odkaz v emailu a nastavte si nové heslo.",
+    forgotPasswordConfirm: "Heslo je změněné. Nyní se můžete přihlásit.",
+    invalidPasswordIdentical: "Hesla se neshodují",    
+    confirmPassword: "Prosím nastavte si nové heslo",
 
     //dashboard
     dashboard: "Dashboard",
@@ -91,6 +95,8 @@ const cs = [{
     domainInfo: "Jako první krok si prosím vytvořte název domény (například jméno firmy), která bude zastřešovat veškerou další práci s dokumenty a uživateli.",
     domainNotice: "Po validaci jména a uložení nebude možné název domény změnit",
     domainEmpty: "Název domény nesmí být prázdný",
+    domainDuplicate: "Doména s tímto názvem již existuje, zvolte prosím jiný název",
+    domainError: "Při vytváření domény se vyskytla chyba, zkuste to prosím později",
     
     //common
     search: "Vyhledat",
