@@ -156,7 +156,7 @@ export default class Registration extends Component {
                     label="Captcha"
                     type="captcha"
                     required={true} />
-                <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300" theme={MyTheme}> {strings.register} </Button>
+                <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300Btn" theme={MyTheme}> {strings.register} </Button>
                 <div className="divLink" onClick={() => this.toForgottenPass()} variant="contained"> {strings.forgottenPassword} </div>
                 <div className="divLink" onClick={() => this.toLogin()} variant="contained"> {strings.backToLogin} </div>
             </form>

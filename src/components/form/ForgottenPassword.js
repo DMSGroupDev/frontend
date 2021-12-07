@@ -152,7 +152,7 @@ export default class ForgottenPassword extends Component {
                         label={strings.email}
                         type="text"
                         required={true} />
-                    <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300" theme={MyTheme}> {strings.generateLinkPassword} </Button>
+                    <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300Btn" theme={MyTheme}> {strings.generateLinkPassword} </Button>
                     <div className="divLink" onClick={() => this.toLogin()} variant="contained"> {strings.backToLogin} </div>
                     <div className="divLink" onClick={() => this.toRegistration()} variant="contained"> {strings.newRegistration} </div>
                 </form>
@@ -173,7 +173,7 @@ export default class ForgottenPassword extends Component {
                         label={strings.newPasswordConfirm}
                         type="password"
                         required={true} />
-                    <Button type="submit" onClick={this.handleSubmitConfirm} variant="contained" className="width300" theme={MyTheme}> {strings.resetPassword} </Button>
+                    <Button type="submit" onClick={this.handleSubmitConfirm} variant="contained" className="width300Btn" theme={MyTheme}> {strings.resetPassword} </Button>
                     <div className="divLink" onClick={() => this.toLogin()} variant="contained"> {strings.backToLogin} </div>
                     <div className="divLink" onClick={() => this.toRegistration()} variant="contained"> {strings.newRegistration} </div>
                 </form>

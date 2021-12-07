@@ -115,7 +115,7 @@ export default class Login extends Component {
                     label={strings.password}
                     type="password"
                     required={true} />
-                <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300" theme={MyTheme}> {strings.login} </Button>
+                <Button type="submit" onClick={this.handleSubmit} variant="contained" className="width300Btn" theme={MyTheme}> {strings.login} </Button>
                 <div className="divLink" onClick={() => this.toForgottenPass()} variant="contained"> {strings.forgottenPassword} </div>
                 <div className="divLink" onClick={() => this.toRegistration()} variant="contained"> {strings.newRegistration} </div>
             </form>

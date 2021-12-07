@@ -2,8 +2,16 @@ import { Component } from 'react';
 import strings from '../localization/Localization.js';
 import dataProvider from '../helpers/dataProvider.js';
 import MyTheme from '../components/common/MyTheme';
+import SwitchLanguage from '../components/common/SwitchLanguage.js';
 
 export default class Confirm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            language: '',
+        };
+        this.propagateLanguage = (language) => this.setState({ language });
+    }
     componentDidMount = async () => {
 
         const confirm = this.props.match.params.confirm
@@ -61,8 +69,10 @@ export default class Confirm extends Component {
         }
     }
     render() {
+        const language = localStorage.getItem('language');
         return (
             <div className="initUser" theme={MyTheme}>
+                <div><SwitchLanguage value={language} onLanguageChange={this.propagateLanguage} /></div>
                 <div>{strings.verified}</div>
             </div>
         );
