@@ -68,6 +68,9 @@ export default class ForgottenPassword extends Component {
                 })
                 if (response[0] === 200) {
                     this.setState({ show: false });
+                    const language = localStorage.getItem('language');
+                    localStorage.clear();
+                    localStorage.setItem('language', language);
                     return ([strings.forgotPasswordConfirm, false]);
                 } else {
                     this.setState({ show: true });
@@ -97,7 +100,11 @@ export default class ForgottenPassword extends Component {
         event.preventDefault();
         const result = await this.sendResetEmail();
         this.setState({ result: result[0] });
-        this.props.onResultChange(result[0], result[1], !result[1], '');
+        if (result[1]) {
+            this.props.onResultChange(result[0], false, false, true, '');
+        } else {
+            this.props.onResultChange(result[0], false, true, false, '');
+        }
         if (this.state.isValidForm)
             this.handleReset();
         render()
@@ -107,7 +114,11 @@ export default class ForgottenPassword extends Component {
         event.preventDefault();
         const result = await this.setNewPassword();
         this.setState({ result: result[0] });
-        this.props.onResultChange(result[0], result[1], result[2]);
+        if (result[1]){
+            this.props.onResultChange(result[0], false, false, true, '');
+        } else {
+            this.props.onResultChange(result[0], false, true, false, '');
+        }
         if (this.state.isValidForm)
             this.handleReset();
         render()

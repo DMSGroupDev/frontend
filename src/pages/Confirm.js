@@ -36,12 +36,14 @@ export default class Confirm extends Component {
                 try {
                     var responsePass = await dataProvider.postDataUnauth('identity/ValidateForgetPassword', {
                         userId: confirm.split('_')[1],
-                        code: (confirm.split('_')[2] + "_" + confirm.split('_')[3])
+                        code: (confirm.split('_')[2])
                     })
                     if (responsePass[0] === 200) {
+                        localStorage.setItem('userToken', confirm.split('_')[1]);
+                        localStorage.setItem('forgotPassToken', confirm.split('_')[2]);
                         sessionStorage.setItem('confirmMessage', strings.confirmPassword);
                         setTimeout(() => sessionStorage.removeItem('confirmMessage'), 2000);
-                        window.location.href = "#/forgottenPassword";
+                        window.location.href = "#/login";
                     } else {
                         sessionStorage.setItem('confirmMessage', strings.unsuccessResetPassword);
                         setTimeout(() => sessionStorage.removeItem('confirmMessage'), 2000);

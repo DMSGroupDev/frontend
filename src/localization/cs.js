@@ -41,11 +41,12 @@ const cs = [{
     newPassword: "Nové heslo",
     newPasswordConfirm: "Nové heslo znovu",
     resetPassword: "Uložit nové heslo",
-    unsuccessResetPassword: "Během resetu hesla se vyskytla chyba. Zkuste to prosím později.",
+    unsuccessResetPassword: "Reset hesla není možný, zkuste to prosím později nebo si znovu resetujte heslo.",
     generateLinkPassword: "Odeslat email pro reset hesla",
-    forgotPasswordEmail: "Změnu hesla dokončíte potvrzením odkazu zaslaným emailem",
+    forgotPasswordEmail: "Pro reset hesla klikněte na odkaz v emailu a nastavte si nové heslo.",
     forgotPasswordConfirm: "Heslo je změněné. Nyní se můžete přihlásit.",
     invalidPasswordIdentical: "Hesla se neshodují",    
+    confirmPassword: "Prosím nastavte si nové heslo",
 
     //dashboard
     dashboard: "Dashboard",

@@ -42,11 +42,12 @@ const en = [{
     newPassword: "New password",
     newPasswordConfirm: "New password again",
     resetPassword: "Save new password",
-    unsuccessResetPassword: "An error occurred while resetting the password. Please try again later.",
+    unsuccessResetPassword: "Password reset not possible, please try again later or reset your password again.",
     generateLinkPassword: "Send password reset email",
-    forgotPasswordEmail: "To complete the password change, please confirm the link via email.",
+    forgotPasswordEmail: "To reset your password, click on the link in the email and set a new password.",
     forgotPasswordConfirm: "The password is changed. You can log in now.",
     invalidPasswordIdentical: "Passwords do not match",
+    confirmPassword: "Please set a new password",
 
     //dashboard
     dashboard: "Dashboard",
